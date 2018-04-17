@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="telaCadastro" prefHeight="575.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.telaCadastroController">
+   <children>
+      <Label layoutX="26.0" layoutY="11.0" text="Cadastros" textFill="#cdc5c5">
+         <font>
+            <Font name="Century Gothic Bold" size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="28.0" layoutY="47.0" prefHeight="0.0" prefWidth="670.0" />
+      <ImageView fx:id="btFecharCadastros" fitHeight="29.0" fitWidth="35.0" layoutX="669.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/ic_cancel_grey600_18dp.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="btCadastrarCliente" fitHeight="74.0" fitWidth="64.0" layoutX="129.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/botao-cadastrar-cliente.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <StackPane fx:id="stackPane1" prefHeight="575.0" prefWidth="726.0" visible="false" />
+   </children>
+</AnchorPane>
