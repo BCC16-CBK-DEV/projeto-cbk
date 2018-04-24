@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.CadastroOrdemServicoController">
+   <children>
+      <Button fx:id="btGravarOS" layoutX="229.0" layoutY="462.0" mnemonicParsing="false" style="-fx-background-color: #000;" text="Gravar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btCancelarOS" layoutX="388.0" layoutY="462.0" mnemonicParsing="false" style="-fx-background-color: #000;" text="Cancelar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Pane layoutX="27.0" layoutY="229.0" prefHeight="15.0" prefWidth="666.0" style="-fx-background-color: #000;">
+         <children>
+            <Label layoutX="266.0" layoutY="-1.0" prefHeight="17.0" prefWidth="135.0" text="Informações do Produto" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="26.0" layoutY="344.0" prefHeight="15.0" prefWidth="666.0" style="-fx-background-color: #000;">
+         <children>
+            <Label layoutX="266.0" layoutY="-1.0" prefHeight="17.0" prefWidth="135.0" text="Informações do Cliente" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="25.0" layoutY="100.0" prefHeight="15.0" prefWidth="666.0" style="-fx-background-color: #000;">
+         <children>
+            <Label layoutX="279.0" layoutY="-1.0" prefHeight="17.0" prefWidth="109.0" text="Informações da OS" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Separator layoutX="34.0" layoutY="49.0" prefHeight="0.0" prefWidth="670.0" />
+      <Label layoutX="34.0" layoutY="14.0" text="Cadastros &gt; Ordem de Serviço" textFill="#cdc5c5">
+         <font>
+            <Font name="Century Gothic Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="77.0" text="Cadastrar Ordem de Serviço" />
+      <TextField fx:id="txtDataAberturaOS" layoutX="136.0" layoutY="140.0" prefHeight="25.0" prefWidth="94.0" />
+      <Label layoutX="34.0" layoutY="144.0" text="Data de Abertura:" />
+      <Label layoutX="249.0" layoutY="144.0" text="Nota Fiscal:" />
+      <TextField fx:id="txtNotaFiscalOS" layoutX="322.0" layoutY="140.0" prefHeight="17.0" prefWidth="94.0" />
+      <TextField fx:id="txtDataCompraOS" layoutX="540.0" layoutY="140.0" prefHeight="17.0" prefWidth="94.0" />
+      <Label layoutX="440.0" layoutY="144.0" text="Data de Compra:" />
+      <Label layoutX="29.0" layoutY="186.0" text="Defeito Reclamando:" />
+      <TextField fx:id="txtDefeitoOS" layoutX="140.0" layoutY="182.0" prefHeight="25.0" prefWidth="495.0" />
+      <TextField fx:id="txtVoltagemOS" layoutX="95.0" layoutY="313.0" prefHeight="25.0" prefWidth="90.0" />
+      <Label layoutX="32.0" layoutY="317.0" text="Voltagem:" />
+      <TextField fx:id="txtDescricaoOS" layoutX="275.0" layoutY="271.0" prefHeight="25.0" prefWidth="356.0" />
+      <Label layoutX="200.0" layoutY="275.0" text="Descrição:" />
+      <Label layoutX="32.0" layoutY="275.0" text="Código:" />
+      <TextField fx:id="txtCodigoOS" layoutX="82.0" layoutY="271.0" prefHeight="25.0" prefWidth="103.0" />
+      <Label layoutX="199.0" layoutY="317.0" text="Número de Série:" />
+      <TextField fx:id="txtNumeroSerieOS" layoutX="309.0" layoutY="313.0" prefHeight="25.0" prefWidth="324.0" />
+      <TextField fx:id="txtCpfOS" layoutX="70.0" layoutY="412.0" prefHeight="25.0" prefWidth="135.0" />
+      <Label layoutX="41.0" layoutY="416.0" text="CPF:" />
+      <Label layoutX="34.0" layoutY="374.0" text="Nome:" />
+      <ComboBox fx:id="cmbNomeOS" layoutX="76.0" layoutY="370.0" prefHeight="25.0" prefWidth="252.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ComboBox>
+   </children>
+</AnchorPane>
