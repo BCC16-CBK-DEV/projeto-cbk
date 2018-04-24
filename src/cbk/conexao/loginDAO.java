@@ -92,6 +92,11 @@ public class loginDAO extends DAO<loginDados> {
         
         return versao;
     }
+
+    @Override
+    public boolean inserirOrdemServico(loginDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

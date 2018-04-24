@@ -52,7 +52,6 @@ public class telaCadastroController implements Initializable {
     }
     
     public void fecharFXML() {
-        //stackPane.getChildren().remove(telaCadastroFxml);
         stackPane1.setVisible(false);
     }
     

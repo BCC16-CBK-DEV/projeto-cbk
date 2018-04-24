@@ -72,4 +72,9 @@ public class clienteDAO extends DAO<clienteDados> {
     public String Versao() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean inserirOrdemServico(clienteDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

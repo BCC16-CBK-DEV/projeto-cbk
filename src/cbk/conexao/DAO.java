@@ -18,7 +18,7 @@ public abstract class DAO<T>{
     protected Connection conn;
     
     public DAO(){
-        String url = "jdbc:mysql://localhost:3306/cbk_database";
+        String url = "jdbc:mysql://127.0.0.1:3306/cbk_database";
         String user = "root";
         String senha = "";
         
@@ -37,4 +37,5 @@ public abstract class DAO<T>{
     public abstract String Autorizada();
     public abstract boolean inserirCliente(T obj);
     public abstract String Versao();
+    public abstract boolean inserirOrdemServico(T obj);
 }
