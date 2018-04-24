@@ -104,7 +104,7 @@ public class CadastroOrdemServicoController implements Initializable {
                             lb_idOS.setText(null);
                             txtCpfOS.setText(null);
                             
-                            telaCadastroController.telaCadastroControle.fecharFXML();   
+                            telaCadastroController.telaCadastroControle.fecharFXML();
                 }
             }
         });

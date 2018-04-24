@@ -38,6 +38,7 @@ public class telaCadastroController implements Initializable {
     @FXML private ImageView btFecharCadastros;
     @FXML StackPane stackPane1;
     @FXML private ImageView btCadastrarCliente;
+    @FXML private ImageView btCadastrarOrdemServico;
     
     private boolean checkTelaAberta = false;
     
@@ -46,6 +47,16 @@ public class telaCadastroController implements Initializable {
             try {
                 telaCadastroCliente = FXMLLoader.load(telaCadastroController.this.getClass().getResource("cadastro-cliente.fxml"));
                 stackPane1.getChildren().add(telaCadastroCliente);
+            }catch(IOException ex) {
+                 System.out.printf("Erro: %s", ex.getMessage());
+            }
+    }
+    
+    Parent telaCadastroOS;
+    public void carregarFXML_OS(){ 
+            try {
+                telaCadastroOS = FXMLLoader.load(telaCadastroController.this.getClass().getResource("cadastroOrdemServico.fxml"));
+                stackPane1.getChildren().add(telaCadastroOS);
             }catch(IOException ex) {
                  System.out.printf("Erro: %s", ex.getMessage());
             }
@@ -64,6 +75,14 @@ public class telaCadastroController implements Initializable {
         btCadastrarCliente.setOnMouseClicked((MouseEvent event) -> {
             stackPane1.setVisible(true);
             carregarFXML();
+            
+            
+        });
+        
+        btCadastrarOrdemServico.setOnMouseClicked((MouseEvent event) -> {
+            stackPane1.setVisible(true);
+            carregarFXML_OS();
+            
             
         });
         
