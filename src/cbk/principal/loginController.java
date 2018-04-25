@@ -70,7 +70,7 @@ public class loginController implements Initializable {
     }
     
     public void fecharFXML() {
-        //stackPane.getChildren().remove(telaCadastroFxml);
+        stackPane.getChildren().remove(telaCadastroFxml);
         stackPane.setVisible(false);
     }
     

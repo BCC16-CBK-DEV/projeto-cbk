@@ -84,7 +84,7 @@ public class CadastroOrdemServicoController implements Initializable {
                 
                         OrdemServicoDAO OsDOA = new OrdemServicoDAO();
                         OsDOA.inserirOrdemServico(OS1);
-                        telaCadastroController.telaCadastroControle.fecharFXML();
+                        telaCadastroController.telaCadastroControle.fecharFXML_OS();
                 
                  }
         });
@@ -101,10 +101,10 @@ public class CadastroOrdemServicoController implements Initializable {
                             txtDescricaoOS.setText(null);
                             cmbNomeOS.setItems(null);
                             txtDataAberturaOS.setText(null);
-                            lb_idOS.setText(null);
+                            //lb_idOS.setText(null);
                             txtCpfOS.setText(null);
                             
-                            telaCadastroController.telaCadastroControle.fecharFXML();
+                            telaCadastroController.telaCadastroControle.fecharFXML_OS();
                 }
             }
         });

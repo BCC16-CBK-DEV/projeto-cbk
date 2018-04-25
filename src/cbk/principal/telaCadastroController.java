@@ -62,8 +62,14 @@ public class telaCadastroController implements Initializable {
             }
     }
     
-    public void fecharFXML() {
+    public void fecharFXML_Cliente() {
         stackPane1.setVisible(false);
+        stackPane1.getChildren().remove(telaCadastroCliente);
+    }
+    
+    public void fecharFXML_OS() {
+        stackPane1.setVisible(false);
+        stackPane1.getChildren().remove(telaCadastroOS);
     }
     
     

@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.CadastroOrdemServicoController">
+<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.CadastroOrdemServicoController">
    <children>
       <Button fx:id="btGravarOS" layoutX="229.0" layoutY="462.0" mnemonicParsing="false" style="-fx-background-color: #000;" text="Gravar" textFill="WHITE">
          <cursor>

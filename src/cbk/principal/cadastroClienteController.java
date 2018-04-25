@@ -86,7 +86,7 @@ public class cadastroClienteController implements Initializable {
                 
                         clienteDAO cd = new clienteDAO();
                         cd.inserirCliente(cliente);
-                        telaCadastroController.telaCadastroControle.fecharFXML();
+                        telaCadastroController.telaCadastroControle.fecharFXML_Cliente();
                 
                 }}
         });
@@ -107,7 +107,7 @@ public class cadastroClienteController implements Initializable {
                     txtEmail.setText(null);
                     txtTelefone.setText(null);
                     txtCelular.setText(null);
-                    telaCadastroController.telaCadastroControle.fecharFXML();   
+                    telaCadastroController.telaCadastroControle.fecharFXML_Cliente();   
                 }
             }
         });
