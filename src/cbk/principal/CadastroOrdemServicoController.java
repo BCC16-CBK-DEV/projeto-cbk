@@ -8,7 +8,11 @@ package cbk.principal;
 import cbk.conexao.OrdemServicoDAO;
 import cbk.dados.OrdemServicoDados;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +21,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,11 +45,11 @@ public class CadastroOrdemServicoController implements Initializable {
     @FXML private TextField txtDescricaoOS;
     @FXML private TextField txtVoltagemOS;
     @FXML private TextField txtNumeroSerieOS;
-    @FXML private ComboBox cmbNomeOS;
+    @FXML private ComboBox<String> cmbNomeOS;
     @FXML private TextField txtCpfOS;
     @FXML private Label lb_idOS ;
     
-    
+    int auxId = 0;
       
     /**
      * Initializes the controller class.
@@ -76,14 +81,16 @@ public class CadastroOrdemServicoController implements Initializable {
                     OS.setDescricao_produto(txtDescricaoOS.getText());
                     OS.setNumero_serie_produto(txtNumeroSerieOS.getText());
                     OS.setVoltagem(txtVoltagemOS.getText());
-                    
+                    OS.setCpfOS(txtCpfOS.getText());
+                    OS.setId_ClienteOS(auxId);
+                   
                     
                     //combo nome
                     //cpf pelo nome
                     
                 
                         OrdemServicoDAO OsDOA = new OrdemServicoDAO();
-                        OsDOA.inserirOrdemServico(OS1);
+                        OsDOA.inserirOrdemServico(OS);
                         telaCadastroController.telaCadastroControle.fecharFXML_OS();
                 
                  }
@@ -108,9 +115,21 @@ public class CadastroOrdemServicoController implements Initializable {
                 }
             }
         });
+        
+        OrdemServicoDAO osDAO = new OrdemServicoDAO();
+        ObservableList<String> options = FXCollections.observableArrayList(osDAO.Nome());
+        cmbNomeOS.setItems(options);
+        String auxNome = cmbNomeOS.getValue(); 
+        String auxCpf = osDAO.SelectCpf(auxNome);
+        txtCpfOS.setText(auxCpf);
+        auxId = osDAO.SelectId_Cliente(auxNome, auxCpf);
+        
+        
+    } 
+    
     }    
     
-}
+
 
         
 

@@ -222,6 +222,19 @@ private Integer idcliente;
         propertyChangeSupport.firePropertyChange(PROP_ESTADO, oldEstado, estado);
     }
 
-    
+        private int Id_ClienteOS;
+
+    public static final String PROP_ID_CLIENTEOS = "Id_ClienteOS";
+
+    public int getId_ClienteOS() {
+        return Id_ClienteOS;
+    }
+
+    public void setId_ClienteOS(int Id_ClienteOS) {
+        int oldId_ClienteOS = this.Id_ClienteOS;
+        this.Id_ClienteOS = Id_ClienteOS;
+        propertyChangeSupport.firePropertyChange(PROP_ID_CLIENTEOS, oldId_ClienteOS, Id_ClienteOS);
+    }
+
     
 }

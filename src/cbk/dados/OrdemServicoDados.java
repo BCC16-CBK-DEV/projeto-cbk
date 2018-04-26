@@ -46,9 +46,9 @@ public class OrdemServicoDados {
     }
 
     public void setNumero_OS(int numero_ordem) {
-        int oldCpf = this.numero_ordem;
+        int oldNumero_OS = this.numero_ordem;
         this.numero_ordem = numero_ordem;
-        propertyChangeSupport.firePropertyChange(PROP_NUMERO_ORDEM, oldCpf, numero_ordem);
+        propertyChangeSupport.firePropertyChange(PROP_NUMERO_ORDEM, oldNumero_OS, numero_ordem);
     }
 
         private String nota_fiscal;
@@ -164,6 +164,34 @@ public class OrdemServicoDados {
         propertyChangeSupport.firePropertyChange(PROP_DATA_ABERTURA, oldData_abertura, Data_abertura);
     }
 
-    
+       private int Id_ClienteOS;
+
+    public static final String PROP_ID_CLIENTEOS = "Id_ClienteOS";
+
+    public int getId_ClienteOS() {
+        return Id_ClienteOS;
+    }
+
+    public void setId_ClienteOS(int Id_ClienteOS) {
+        int oldId_ClienteOS = this.Id_ClienteOS;
+        this.Id_ClienteOS = Id_ClienteOS;
+        propertyChangeSupport.firePropertyChange(PROP_ID_CLIENTEOS, oldId_ClienteOS, Id_ClienteOS);
+    }
+
+
+        private String CpfOS;
+
+    public static final String PROP_CPFOS = "CpfOS";
+
+    public String getCpfOS() {
+        return CpfOS;
+    }
+
+    public void setCpfOS(String CpfOS) {
+        String oldCpfOS = this.CpfOS;
+        this.CpfOS = CpfOS;
+        propertyChangeSupport.firePropertyChange(PROP_CPFOS, oldCpfOS, CpfOS);
+    }
+
     
 }

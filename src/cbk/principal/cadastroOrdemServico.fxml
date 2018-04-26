@@ -56,8 +56,8 @@
       <TextField fx:id="txtCodigoOS" layoutX="82.0" layoutY="271.0" prefHeight="25.0" prefWidth="103.0" />
       <Label layoutX="199.0" layoutY="317.0" text="Número de Série:" />
       <TextField fx:id="txtNumeroSerieOS" layoutX="309.0" layoutY="313.0" prefHeight="25.0" prefWidth="324.0" />
-      <TextField fx:id="txtCpfOS" layoutX="70.0" layoutY="412.0" prefHeight="25.0" prefWidth="135.0" />
-      <Label layoutX="41.0" layoutY="416.0" text="CPF:" />
+      <TextField fx:id="txtCpfOS" layoutX="70.0" layoutY="412.0" prefHeight="25.0" prefWidth="135.0" visible="false" />
+      <Label layoutX="41.0" layoutY="416.0" text="CPF:" visible="false" />
       <Label layoutX="34.0" layoutY="374.0" text="Nome:" />
       <ComboBox fx:id="cmbNomeOS" layoutX="76.0" layoutY="370.0" prefHeight="25.0" prefWidth="252.0">
          <cursor>

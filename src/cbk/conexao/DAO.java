@@ -8,6 +8,7 @@ package cbk.conexao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,4 +39,9 @@ public abstract class DAO<T>{
     public abstract boolean inserirCliente(T obj);
     public abstract String Versao();
     public abstract boolean inserirOrdemServico(T obj);
+    public abstract int SelectId_Cliente(String pNome, String pCpf) ;    
+    public abstract List<String> Nome();
+    public abstract String SelectCpf(String pNome);
+        
+    
 }
