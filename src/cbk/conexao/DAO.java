@@ -5,6 +5,7 @@
  */
 package cbk.conexao;
 
+import cbk.dados.loginDados;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -38,10 +39,18 @@ public abstract class DAO<T>{
     public abstract String Autorizada();
     public abstract boolean inserirCliente(T obj);
     public abstract String Versao();
-    public abstract boolean inserirOrdemServico(T obj);
-    public abstract int SelectId_Cliente(String pNome, String pCpf) ;    
+    public abstract boolean inserirOrdemServico(T obj);   
     public abstract List<String> Nome();
-    public abstract String SelectCpf(String pNome);
-        
+    public abstract String SelectCpf(int indexSelecionado);
+    public abstract int numeroOrdemIncremento();
+    public abstract int contagemOsAbertas();
+    public abstract boolean inserirPedido(T obj);
+    public abstract boolean inserirItemPedido(T obj);
+    public abstract List<Integer> ordemServico();
+    public abstract boolean inserirUsuario(T obj);
+    public abstract List<T> usuarios();
+    public abstract List<String> departamentos();
+    public abstract int numeroPedidoIncremento();
+    public abstract boolean finalizarGravarDadosPedido(T obj);    
     
 }

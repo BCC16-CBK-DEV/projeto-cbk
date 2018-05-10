@@ -5,6 +5,8 @@
  */
 package cbk.principal;
 
+import cbk.conexao.pedidoPecaDAO;
+import cbk.dados.pedidoPecaDados;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,6 +41,7 @@ public class telaCadastroController implements Initializable {
     @FXML StackPane stackPane1;
     @FXML private ImageView btCadastrarCliente;
     @FXML private ImageView btCadastrarOrdemServico;
+    @FXML ImageView btCadastroPedido;
     
     private boolean checkTelaAberta = false;
     
@@ -47,6 +50,9 @@ public class telaCadastroController implements Initializable {
             try {
                 telaCadastroCliente = FXMLLoader.load(telaCadastroController.this.getClass().getResource("cadastro-cliente.fxml"));
                 stackPane1.getChildren().add(telaCadastroCliente);
+                loginController.loginTela.btSair.setVisible(false); 
+                loginController.loginTela.btCadastro.setDisable(true);
+                loginController.loginTela.btUsuario.setDisable(true);
             }catch(IOException ex) {
                  System.out.printf("Erro: %s", ex.getMessage());
             }
@@ -57,6 +63,9 @@ public class telaCadastroController implements Initializable {
             try {
                 telaCadastroOS = FXMLLoader.load(telaCadastroController.this.getClass().getResource("cadastroOrdemServico.fxml"));
                 stackPane1.getChildren().add(telaCadastroOS);
+                loginController.loginTela.btSair.setVisible(true);
+                loginController.loginTela.btCadastro.setDisable(true);
+                loginController.loginTela.btUsuario.setDisable(true);
             }catch(IOException ex) {
                  System.out.printf("Erro: %s", ex.getMessage());
             }
@@ -65,11 +74,38 @@ public class telaCadastroController implements Initializable {
     public void fecharFXML_Cliente() {
         stackPane1.setVisible(false);
         stackPane1.getChildren().remove(telaCadastroCliente);
+        loginController.loginTela.btSair.setVisible(true);
+        loginController.loginTela.btCadastro.setDisable(false);
+        loginController.loginTela.btUsuario.setDisable(false);  
     }
     
     public void fecharFXML_OS() {
         stackPane1.setVisible(false);
         stackPane1.getChildren().remove(telaCadastroOS);
+        loginController.loginTela.btSair.setVisible(true);
+        loginController.loginTela.btCadastro.setDisable(false);
+        loginController.loginTela.btUsuario.setDisable(false);  
+    }
+    
+    Parent TelaCadastroPedido;
+    public void carregarTelaCadastroPedido(){
+        try{
+             TelaCadastroPedido = FXMLLoader.load(telaCadastroController.this.getClass().getResource("pedido_peca_tela.fxml"));
+             stackPane1.getChildren().add(TelaCadastroPedido);
+             loginController.loginTela.btSair.setVisible(false);
+             loginController.loginTela.btCadastro.setDisable(true);
+             loginController.loginTela.btUsuario.setDisable(true);
+         }catch(IOException ex){
+            System.out.printf("Erro: %s", ex.getMessage());
+         }
+    }
+    
+    public void FecharTelaCadastroPedido (){
+        stackPane1.getChildren().remove(TelaCadastroPedido);
+        stackPane1.setVisible(false);
+        loginController.loginTela.btSair.setVisible(true);
+        loginController.loginTela.btCadastro.setDisable(false);
+        loginController.loginTela.btUsuario.setDisable(false);    
     }
     
     
@@ -80,16 +116,12 @@ public class telaCadastroController implements Initializable {
         
         btCadastrarCliente.setOnMouseClicked((MouseEvent event) -> {
             stackPane1.setVisible(true);
-            carregarFXML();
-            
-            
+            carregarFXML();     
         });
         
         btCadastrarOrdemServico.setOnMouseClicked((MouseEvent event) -> {
             stackPane1.setVisible(true);
             carregarFXML_OS();
-            
-            
         });
         
         btFecharCadastros.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -99,7 +131,13 @@ public class telaCadastroController implements Initializable {
             }
         });
         
-        
+        btCadastroPedido.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                stackPane1.setVisible(true);
+                carregarTelaCadastroPedido();
+           }
+        });
     }    
     
 }

@@ -48,8 +48,8 @@
       <TextField fx:id="txtCpf" layoutX="82.0" layoutY="147.0" prefHeight="25.0" prefWidth="231.0" />
       <TextField fx:id="txtRg" layoutX="365.0" layoutY="147.0" prefHeight="25.0" prefWidth="231.0" />
       <TextField fx:id="txtCep" layoutX="82.0" layoutY="183.0" prefHeight="25.0" prefWidth="231.0" />
-      <TextField fx:id="txtRg1" layoutX="365.0" layoutY="183.0" prefHeight="25.0" prefWidth="231.0" />
-      <TextField fx:id="txtComplemento11" layoutX="627.0" layoutY="183.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="txtCidade" layoutX="365.0" layoutY="183.0" prefHeight="25.0" prefWidth="231.0" />
+      <TextField fx:id="txtEstado" layoutX="627.0" layoutY="183.0" prefHeight="25.0" prefWidth="72.0" />
       <TextField fx:id="txtEndereco" layoutX="82.0" layoutY="221.0" prefHeight="25.0" prefWidth="622.0" />
       <TextField fx:id="txtBairro" layoutX="82.0" layoutY="257.0" prefHeight="25.0" prefWidth="231.0" />
       <TextField fx:id="txtComplemento" layoutX="403.0" layoutY="257.0" prefHeight="25.0" prefWidth="168.0" />

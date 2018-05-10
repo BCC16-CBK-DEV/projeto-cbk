@@ -8,7 +8,9 @@ package cbk.principal;
 import cbk.conexao.clienteDAO;
 import cbk.dados.clienteDados;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,6 +45,8 @@ public class cadastroClienteController implements Initializable {
     @FXML private TextField txtEmail;
     @FXML private TextField txtTelefone;
     @FXML private TextField txtCelular;
+    @FXML private TextField txtCidade;
+    @FXML private TextField txtEstado;
     
     /**
      * Initializes the controller class
@@ -82,6 +86,8 @@ public class cadastroClienteController implements Initializable {
                     cliente.setEmail(txtEmail.getText());
                     cliente.setTelefone(txtTelefone.getText());
                     cliente.setCelular(txtCelular.getText());
+                    cliente.setCidade(txtCidade.getText());
+                    cliente.setEstado(txtEstado.getText());
                     
                 
                         clienteDAO cd = new clienteDAO();

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.embed.swing.*?>
 <?import javafx.scene.text.*?>
@@ -19,9 +21,9 @@
                   <Image url="@../../images/2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btCadastro" fitHeight="48.0" fitWidth="140.0" layoutX="22.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btCadastro" fitHeight="33.0" fitWidth="113.0" layoutX="41.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/menu-cadastro.png" />
+                  <Image url="@../../images/menu-cadastro_.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -43,6 +45,22 @@
                </font>
             </Label>
             <Label fx:id="txtUsuario_ativo" layoutX="76.0" layoutY="579.0" prefHeight="17.0" prefWidth="101.0" textFill="WHITE" />
+            <ImageView fx:id="btUsuario" fitHeight="48.0" fitWidth="82.0" layoutX="39.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <image>
+                  <Image url="@../../images/menu-usuarios.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btSair" fitHeight="25.0" fitWidth="47.0" layoutX="54.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <image>
+                  <Image url="@../../images/menu-sair.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane layoutX="181.0" layoutY="575.0" prefHeight="25.0" prefWidth="719.0">
@@ -97,14 +115,14 @@
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
       </Text>
-      <Label fx:id="txtOrdensAbertas" layoutX="422.0" layoutY="381.0" text="0">
+      <Label fx:id="txtOrdensConcertadas" layoutX="418.0" layoutY="381.0" text="0">
          <font>
             <Font name="Century Gothic" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="txtOrdensConsertadas" layoutX="410.0" layoutY="353.0" text="0">
+      <Label fx:id="txtOrdensAbertas" layoutX="407.0" layoutY="353.0" text="0" textFill="RED">
          <font>
-            <Font name="Century Gothic" size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Label layoutX="214.0" layoutY="381.0" text="Ordens de serviços Consertadas:">
@@ -143,7 +161,7 @@
          </font>
       </Label>
       <StackPane fx:id="stackPane" layoutX="181.0" prefHeight="575.0" prefWidth="719.0" />
-      <ImageView fx:id="imagemFundo" fitHeight="800.0" fitWidth="900.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imagemFundo" fitHeight="800.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/course.jpg" />
          </image>
@@ -160,17 +178,22 @@
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtUsuario" layoutX="109.0" layoutY="201.0" prefHeight="25.0" prefWidth="265.0" promptText="Digite o nome de Usuário" style="-fx-background-color: #000080; -fx-text-fill: white;" />
+            <TextField fx:id="txtUsuario" layoutX="109.0" layoutY="201.0" prefHeight="25.0" prefWidth="265.0" promptText="Digite o nome de Usuário" style="-fx-text-fill: white; -fx-background-color: radial-gradient(#1A7FAE, #1A689F);">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></TextField>
             <Label layoutX="109.0" layoutY="247.0" text="Senha" textFill="WHITE">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
-            <PasswordField fx:id="txtSenha" layoutX="109.0" layoutY="265.0" prefHeight="25.0" prefWidth="265.0" promptText="Digite a senha" style="-fx-background-color: #000080; -fx-text-fill: white;" />
+            <PasswordField fx:id="txtSenha" layoutX="110.0" layoutY="265.0" prefHeight="25.0" prefWidth="265.0" promptText="Digite a senha" style="-fx-background-color: radial-gradient(#1A7FAE, #1A689F); -fx-text-fill: white;" />
             <Button fx:id="btEntrar" layoutX="109.0" layoutY="325.0" mnemonicParsing="false" onAction="#entrarLogin" prefHeight="25.0" prefWidth="265.0" style="-fx-background-color: #000; -fx-text-fill: white;" text="Entrar">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
+            <Separator layoutX="109.0" layoutY="225.0" prefHeight="3.0" prefWidth="265.0" />
+            <Separator layoutX="109.0" layoutY="289.0" prefHeight="3.0" prefWidth="265.0" />
          </children>
       </Pane>
    </children>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.Pedido_peca_telaController">
+   <children>
+      <Separator layoutX="28.0" layoutY="50.0" prefHeight="0.0" prefWidth="670.0" />
+      <Label layoutX="24.0" layoutY="15.0" text="Cadastros &gt; Pedido de Peça" textFill="#cdc5c5">
+         <font>
+            <Font name="Century Gothic Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="47.0" layoutY="59.0" text="Cadastrar Pedido de Peça para Ordem de Serviço" />
+      <Label layoutX="300.0" layoutY="86.0" text="Número da OS:" />
+      <ComboBox fx:id="combo_OS" layoutX="388.0" layoutY="82.0" prefWidth="150.0" promptText="Selecione" />
+      <Label layoutX="57.0" layoutY="121.0" text="Código:" />
+      <Label layoutX="226.0" layoutY="121.0" text="Descrição:" />
+      <Label layoutX="550.0" layoutY="121.0" text="Quantidade:" />
+      <TextField fx:id="txtCodigo1" layoutX="103.0" layoutY="117.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField fx:id="txtDesc1" layoutX="285.0" layoutY="117.0" prefHeight="25.0" prefWidth="255.0" />
+      <TextField fx:id="txtQtd1" layoutX="622.0" layoutY="117.0" prefHeight="25.0" prefWidth="42.0" />
+      <TextField fx:id="txtCodigo2" layoutX="102.0" layoutY="155.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField fx:id="txtDesc2" layoutX="284.0" layoutY="155.0" prefHeight="25.0" prefWidth="255.0" />
+      <TextField fx:id="txtQtd2" layoutX="621.0" layoutY="155.0" prefHeight="25.0" prefWidth="42.0" />
+      <TextField fx:id="txtCodigo3" layoutX="102.0" layoutY="193.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField fx:id="txtDesc3" layoutX="284.0" layoutY="193.0" prefHeight="25.0" prefWidth="255.0" />
+      <TextField fx:id="txtQtd3" layoutX="621.0" layoutY="193.0" prefHeight="25.0" prefWidth="42.0" />
+      <Label layoutX="549.0" layoutY="159.0" text="Quantidade:" />
+      <Label layoutX="225.0" layoutY="159.0" text="Descrição:" />
+      <Label layoutX="56.0" layoutY="159.0" text="Código:" />
+      <Label layoutX="549.0" layoutY="197.0" text="Quantidade:" />
+      <Label layoutX="225.0" layoutY="197.0" text="Descrição:" />
+      <Label layoutX="56.0" layoutY="197.0" text="Código:" />
+      <TextField fx:id="txtCodigo4" layoutX="102.0" layoutY="230.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField fx:id="txtDesc4" layoutX="284.0" layoutY="230.0" prefHeight="25.0" prefWidth="255.0" />
+      <TextField fx:id="txtQtd4" layoutX="621.0" layoutY="230.0" prefHeight="25.0" prefWidth="42.0" />
+      <Label layoutX="549.0" layoutY="234.0" text="Quantidade:" />
+      <Label layoutX="225.0" layoutY="234.0" text="Descrição:" />
+      <Label layoutX="56.0" layoutY="234.0" text="Código:" />
+      <Label fx:id="lbCodigo8" layoutX="56.0" layoutY="382.0" text="Código:" visible="false" />
+      <Label fx:id="lbDesc8" layoutX="225.0" layoutY="382.0" text="Descrição:" visible="false" />
+      <Label fx:id="lbQtd8" layoutX="549.0" layoutY="382.0" text="Quantidade:" visible="false" />
+      <TextField fx:id="txtCodigo5" layoutX="102.0" layoutY="265.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField fx:id="txtDesc5" layoutX="284.0" layoutY="265.0" prefHeight="25.0" prefWidth="255.0" />
+      <TextField fx:id="txtQtd5" layoutX="621.0" layoutY="265.0" prefHeight="25.0" prefWidth="42.0" />
+      <TextField fx:id="txtCodigo6" layoutX="102.0" layoutY="303.0" prefHeight="25.0" prefWidth="114.0" visible="false" />
+      <TextField fx:id="txtDesc6" layoutX="284.0" layoutY="303.0" prefHeight="25.0" prefWidth="255.0" visible="false" />
+      <TextField fx:id="txtQtd6" layoutX="621.0" layoutY="303.0" prefHeight="25.0" prefWidth="42.0" visible="false" />
+      <TextField fx:id="txtCodigo7" layoutX="102.0" layoutY="341.0" prefHeight="25.0" prefWidth="114.0" visible="false" />
+      <TextField fx:id="txtDesc7" layoutX="284.0" layoutY="341.0" prefHeight="25.0" prefWidth="255.0" visible="false" />
+      <TextField fx:id="txtQtd7" layoutX="621.0" layoutY="341.0" prefHeight="25.0" prefWidth="42.0" visible="false" />
+      <TextField fx:id="txtCodigo8" layoutX="102.0" layoutY="378.0" prefHeight="25.0" prefWidth="114.0" visible="false" />
+      <TextField fx:id="txtDesc8" layoutX="284.0" layoutY="378.0" prefHeight="25.0" prefWidth="255.0" visible="false" />
+      <TextField fx:id="txtQtd8" layoutX="621.0" layoutY="378.0" prefHeight="25.0" prefWidth="42.0" visible="false" />
+      <Label fx:id="lbCodigo7" layoutX="56.0" layoutY="345.0" text="Código:" visible="false" />
+      <Label fx:id="lbDesc7" layoutX="225.0" layoutY="345.0" text="Descrição:" visible="false" />
+      <Label fx:id="lbQtd7" layoutX="549.0" layoutY="345.0" text="Quantidade:" visible="false" />
+      <Label fx:id="lbCodigo6" layoutX="56.0" layoutY="307.0" text="Código:" visible="false" />
+      <Label fx:id="lbDesc6" layoutX="225.0" layoutY="307.0" text="Descrição:" visible="false" />
+      <Label fx:id="lbQtd6" layoutX="549.0" layoutY="307.0" text="Quantidade:" visible="false" />
+      <Label layoutX="549.0" layoutY="269.0" text="Quantidade:" />
+      <Label layoutX="225.0" layoutY="269.0" text="Descrição:" />
+      <Label layoutX="56.0" layoutY="269.0" text="Código:" />
+      <TextField fx:id="txtCodigo9" layoutX="102.0" layoutY="414.0" prefHeight="25.0" prefWidth="114.0" visible="false" />
+      <TextField fx:id="txtDesc9" layoutX="284.0" layoutY="414.0" prefHeight="25.0" prefWidth="255.0" visible="false" />
+      <TextField fx:id="txtQtd9" layoutX="621.0" layoutY="414.0" prefHeight="25.0" prefWidth="42.0" visible="false" />
+      <Label fx:id="lbQtd9" layoutX="549.0" layoutY="418.0" text="Quantidade:" visible="false" />
+      <Label fx:id="lbDesc9" layoutX="225.0" layoutY="418.0" text="Descrição:" visible="false" />
+      <Label fx:id="lbCodigo9" layoutX="56.0" layoutY="418.0" text="Código:" visible="false" />
+      <TextField fx:id="txtCodigo10" layoutX="102.0" layoutY="451.0" prefHeight="25.0" prefWidth="114.0" visible="false" />
+      <TextField fx:id="txtDesc10" layoutX="284.0" layoutY="451.0" prefHeight="25.0" prefWidth="255.0" visible="false" />
+      <TextField fx:id="txtQtd10" layoutX="621.0" layoutY="451.0" prefHeight="25.0" prefWidth="42.0" visible="false" />
+      <Label fx:id="lbQtd10" layoutX="549.0" layoutY="455.0" text="Quantidade:" visible="false" />
+      <Label fx:id="lbDesc10" layoutX="225.0" layoutY="455.0" text="Descrição:" visible="false" />
+      <Label fx:id="lbCodigo10" layoutX="56.0" layoutY="455.0" text="Código:" visible="false" />
+      <Label layoutX="66.0" layoutY="490.0" text="Email:" />
+      <TextField fx:id="txtEmail" layoutX="100.0" layoutY="486.0" prefHeight="25.0" prefWidth="230.0" />
+      <Button fx:id="btAdicionar" layoutX="541.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Adicionar + Campos" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btGravar" layoutX="316.0" layoutY="526.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Gravar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btCancelar" layoutX="381.0" layoutY="526.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Cancelar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>

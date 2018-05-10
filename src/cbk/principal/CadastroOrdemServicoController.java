@@ -46,10 +46,8 @@ public class CadastroOrdemServicoController implements Initializable {
     @FXML private TextField txtVoltagemOS;
     @FXML private TextField txtNumeroSerieOS;
     @FXML private ComboBox<String> cmbNomeOS;
-    @FXML private TextField txtCpfOS;
+    @FXML private TextField txtCpfCliente;
     @FXML private Label lb_idOS ;
-    
-    int auxId = 0;
       
     /**
      * Initializes the controller class.
@@ -59,8 +57,11 @@ public class CadastroOrdemServicoController implements Initializable {
         
         cadastroOrdemServicoTela = this;
         
-        cadastroOrdemServicoTela = this;
-        
+         // COMBOBOX - COM OS NOMES DOS CLIENTES
+        OrdemServicoDAO osDAO = new OrdemServicoDAO();
+        ObservableList<String> options = FXCollections.observableArrayList(osDAO.Nome());
+        cmbNomeOS.setItems(options);
+ 
         btGravarOS.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -72,8 +73,14 @@ public class CadastroOrdemServicoController implements Initializable {
                 } 
                 
                     OrdemServicoDados OS = new OrdemServicoDados();
+                    OrdemServicoDAO OsDOA = new OrdemServicoDAO();
+                    
+                    int numeroOrdem = OsDOA.numeroOrdemIncremento();
+                    int clienteIndex = cmbNomeOS.getSelectionModel().getSelectedIndex() + 1;
+                    String cpf = OsDOA.SelectCpf(clienteIndex);
+                    
+                    OS.setNumero_ordem(numeroOrdem);
                     OS.setData_abertura(txtDataAberturaOS.getText());
-                    //OS.setId_Ordem(lb_idOS.getText());
                     OS.setNota_fiscal(txtNotaFiscalOS.getText());
                     OS.setData_compra(txtDataCompraOS.getText());
                     OS.setDefeito_reclamado(txtDefeitoOS.getText());
@@ -81,18 +88,12 @@ public class CadastroOrdemServicoController implements Initializable {
                     OS.setDescricao_produto(txtDescricaoOS.getText());
                     OS.setNumero_serie_produto(txtNumeroSerieOS.getText());
                     OS.setVoltagem(txtVoltagemOS.getText());
-                    OS.setCpfOS(txtCpfOS.getText());
-                    OS.setId_ClienteOS(auxId);
-                   
+                    OS.setId_ClienteOS(clienteIndex);
+
+                    txtCpfCliente.setText(cpf);
                     
-                    //combo nome
-                    //cpf pelo nome
-                    
-                
-                        OrdemServicoDAO OsDOA = new OrdemServicoDAO();
-                        OsDOA.inserirOrdemServico(OS);
-                        telaCadastroController.telaCadastroControle.fecharFXML_OS();
-                
+                    OsDOA.inserirOrdemServico(OS);  
+                    telaCadastroController.telaCadastroControle.fecharFXML_OS();                
                  }
         });
         
@@ -109,22 +110,11 @@ public class CadastroOrdemServicoController implements Initializable {
                             cmbNomeOS.setItems(null);
                             txtDataAberturaOS.setText(null);
                             //lb_idOS.setText(null);
-                            txtCpfOS.setText(null);
                             
                             telaCadastroController.telaCadastroControle.fecharFXML_OS();
                 }
             }
         });
-        
-        OrdemServicoDAO osDAO = new OrdemServicoDAO();
-        ObservableList<String> options = FXCollections.observableArrayList(osDAO.Nome());
-        cmbNomeOS.setItems(options);
-        String auxNome = cmbNomeOS.getValue(); 
-        String auxCpf = osDAO.SelectCpf(auxNome);
-        txtCpfOS.setText(auxCpf);
-        auxId = osDAO.SelectId_Cliente(auxNome, auxCpf);
-        
-        
     } 
     
     }    

@@ -52,5 +52,47 @@ public class loginDados {
         propertyChangeSupport.firePropertyChange(PROP_SENHATEXTO, oldSenhaTexto, senhaTexto);
     }
 
+        private int idUsuario;
+
+    public static final String PROP_IDUSUARIO = "idUsuario";
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        int oldIdUsuario = this.idUsuario;
+        this.idUsuario = idUsuario;
+        propertyChangeSupport.firePropertyChange(PROP_IDUSUARIO, oldIdUsuario, idUsuario);
+    }
+
+        private int idDepartamento;
+
+    public static final String PROP_IDDEPARTAMENTO = "idDepartamento";
+
+    public int getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(int idDepartamento) {
+        int oldIdDepartamento = this.idDepartamento;
+        this.idDepartamento = idDepartamento;
+        propertyChangeSupport.firePropertyChange(PROP_IDDEPARTAMENTO, oldIdDepartamento, idDepartamento);
+    }
+    
+        private String nome_departamento;
+
+    public static final String PROP_NOME_DEPARTAMENTO = "nome_departamento";
+
+    public String getNome_departamento() {
+        return nome_departamento;
+    }
+
+    public void setNome_departamento(String nome_departamento) {
+        String oldNome_departamento = this.nome_departamento;
+        this.nome_departamento = nome_departamento;
+        propertyChangeSupport.firePropertyChange(PROP_NOME_DEPARTAMENTO, oldNome_departamento, nome_departamento);
+    }
+
     
 }

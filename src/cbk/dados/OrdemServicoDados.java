@@ -35,21 +35,21 @@ public class OrdemServicoDados {
         propertyChangeSupport.removePropertyChangeListener(listener);
     }
     
-       
-
-        private int numero_ordem;
+       private int numero_ordem;
 
     public static final String PROP_NUMERO_ORDEM = "numero_ordem";
 
-    public int getNumero_OS() {
+    public int getNumero_ordem() {
         return numero_ordem;
     }
 
-    public void setNumero_OS(int numero_ordem) {
-        int oldNumero_OS = this.numero_ordem;
+    public void setNumero_ordem(int numero_ordem) {
+        int oldNumero_ordem = this.numero_ordem;
         this.numero_ordem = numero_ordem;
-        propertyChangeSupport.firePropertyChange(PROP_NUMERO_ORDEM, oldNumero_OS, numero_ordem);
+        propertyChangeSupport.firePropertyChange(PROP_NUMERO_ORDEM, oldNumero_ordem, numero_ordem);
     }
+
+
 
         private String nota_fiscal;
 
