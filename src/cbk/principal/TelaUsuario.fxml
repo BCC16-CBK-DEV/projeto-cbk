@@ -8,16 +8,30 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="cbk.principal.TelaUsuariosController">
+<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.TelaUsuariosController">
    <children>
       <Button fx:id="btNovoUsuario" layoutX="599.0" layoutY="106.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: black;" text="Novo" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button fx:id="btAlterarUsuario" layoutX="599.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: black;" text="Alterar" textFill="WHITE" />
-      <Button fx:id="btExcluirUsuario" layoutX="599.0" layoutY="171.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: black;" text="Excluir" textFill="WHITE" />
+      <Button fx:id="btAlterarUsuario" layoutX="599.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: black;" text="Alterar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btExcluirUsuario" layoutX="599.0" layoutY="171.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: black;" text="Excluir" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <Separator layoutX="25.0" layoutY="49.0" prefHeight="0.0" prefWidth="670.0" />
       <Label layoutX="25.0" layoutY="14.0" text="Usuários" textFill="#cdc5c5">
          <font>
@@ -29,7 +43,17 @@
          <image>
             <Image url="@../../images/ic_cancel_grey600_18dp.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
+      <TableView fx:id="tabelaUsuarios" layoutX="71.0" layoutY="106.0" prefHeight="324.0" prefWidth="518.0">
+        <columns>
+          <TableColumn fx:id="colunaIdUsuario" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="colunaNomeUsuarios" prefWidth="189.0" text="Nome de Usuario" />
+            <TableColumn fx:id="colunaDepartamentos" prefWidth="253.0" text="Departamento" />
+        </columns>
+      </TableView>
       <Pane fx:id="paneUsuario" layoutX="24.0" layoutY="62.0" prefHeight="422.0" prefWidth="677.0" style="-fx-background-color: white;" visible="false">
          <children>
             <Label fx:id="lbCadastro" layoutX="31.0" layoutY="14.0" text="Novo Usuario" textFill="#cdc5c5">

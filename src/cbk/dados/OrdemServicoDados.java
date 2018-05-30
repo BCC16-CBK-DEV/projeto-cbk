@@ -7,6 +7,8 @@ package cbk.dados;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class OrdemServicoDados {
@@ -35,16 +37,16 @@ public class OrdemServicoDados {
         propertyChangeSupport.removePropertyChangeListener(listener);
     }
     
-       private int numero_ordem;
+       private String numero_ordem;
 
     public static final String PROP_NUMERO_ORDEM = "numero_ordem";
 
-    public int getNumero_ordem() {
+    public String getNumero_ordem() {
         return numero_ordem;
     }
 
-    public void setNumero_ordem(int numero_ordem) {
-        int oldNumero_ordem = this.numero_ordem;
+    public void setNumero_ordem(String numero_ordem) {
+        String oldNumero_ordem = this.numero_ordem;
         this.numero_ordem = numero_ordem;
         propertyChangeSupport.firePropertyChange(PROP_NUMERO_ORDEM, oldNumero_ordem, numero_ordem);
     }
@@ -122,20 +124,21 @@ public class OrdemServicoDados {
         propertyChangeSupport.firePropertyChange(PROP_DESCRICAO_PRODUTO, oldDescricao_produto, descricao_produto);
     }
 
-                   private String data_compra;
+    
+            private Date data_compra;
 
     public static final String PROP_DATA_COMPRA = "data_compra";
 
-    public String getData_compra() {
+    public Date getData_compra() {
         return data_compra;
     }
 
-    public void setData_compra(String data_compra) {
-        String oldData_compra = this.data_compra;
+    public void setData_compra(Date data_compra) {
+        Date oldData_compra = this.data_compra;
         this.data_compra = data_compra;
         propertyChangeSupport.firePropertyChange(PROP_DATA_COMPRA, oldData_compra, data_compra);
-    }
-
+    }  
+    
                 private String defeito_reclamado;
 
     public static final String PROP_DEFEITO_RECLAMADO = "defeito_reclamado";
@@ -149,19 +152,19 @@ public class OrdemServicoDados {
         this.defeito_reclamado = defeito_reclamado;
         propertyChangeSupport.firePropertyChange(PROP_DEFEITO_RECLAMADO, oldDefeito_reclamado, defeito_reclamado);
     }
+    
+        private Date data_abertura;
 
-        private String Data_abertura;
+    public static final String PROP_DATA_ABERTURA = "data_abertura";
 
-    public static final String PROP_DATA_ABERTURA = "Data_abertura";
-
-    public String getData_abertura() {
-        return Data_abertura;
+    public Date getData_abertura() {
+        return data_abertura;
     }
 
-    public void setData_abertura(String Data_abertura) {
-        String oldData_abertura = this.Data_abertura;
-        this.Data_abertura = Data_abertura;
-        propertyChangeSupport.firePropertyChange(PROP_DATA_ABERTURA, oldData_abertura, Data_abertura);
+    public void setData_abertura(Date data_abertura) {
+        Date oldData_abertura = this.data_abertura;
+        this.data_abertura = data_abertura;
+        propertyChangeSupport.firePropertyChange(PROP_DATA_ABERTURA, oldData_abertura, data_abertura);
     }
 
        private int Id_ClienteOS;

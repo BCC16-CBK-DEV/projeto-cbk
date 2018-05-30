@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.TelaconsultaController">
+   <children>
+      <Label layoutX="39.0" layoutY="14.0" text="Consultas" textFill="#cdcdcd">
+         <font>
+            <Font name="Calibri" size="25.0" />
+         </font>
+      </Label>
+      <Separator layoutX="32.0" layoutY="48.0" prefHeight="0.0" prefWidth="654.0" />
+      <ImageView fx:id="btClientes" fitHeight="60.0" fitWidth="64.0" layoutX="138.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/consulta-cliente.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label fx:id="lbClientes" layoutX="136.0" layoutY="189.0" text="Clientes">
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <ImageView fx:id="btFecharConsulta" fitHeight="25.0" fitWidth="25.0" layoutX="660.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/ic_cancel_grey600_18dp.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <StackPane fx:id="stackPaneConsulta" prefHeight="575.0" prefWidth="719.0" visible="false" />
+   </children>
+</AnchorPane>

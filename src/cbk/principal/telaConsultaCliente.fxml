@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.TelaConsultaClienteController">
+   <children>
+      <Label layoutX="26.0" layoutY="5.0" text="Consultas &gt; Clientes" textFill="#c6c4c4">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="28.0" layoutY="39.0" prefHeight="0.0" prefWidth="664.0" />
+      <ImageView fx:id="btFecharTela" fitHeight="25.0" fitWidth="25.0" layoutX="664.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/ic_cancel_grey600_18dp.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="28.0" layoutY="57.0" prefHeight="101.0" prefWidth="664.0" style="-fx-background-color: #cdcdcd;">
+         <children>
+            <Label layoutX="14.0" layoutY="2.0" text="Filtros de Busca:">
+               <font>
+                  <Font name="Calibri Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="27.0" text="Nome:" />
+            <TextField fx:id="txtBuscaNome" layoutX="56.0" layoutY="23.0" prefHeight="25.0" prefWidth="395.0" />
+            <Label layoutX="466.0" layoutY="27.0" text="CPF:" />
+            <TextField fx:id="txtBuscaCpf" layoutX="497.0" layoutY="23.0" prefHeight="25.0" prefWidth="154.0" />
+            <Label layoutX="13.0" layoutY="63.0" text="e-Mail:" />
+            <TextField fx:id="txtBuscaEmail" layoutX="56.0" layoutY="59.0" prefHeight="25.0" prefWidth="264.0" />
+            <Label layoutX="332.0" layoutY="63.0" text="Celular:" />
+            <TextField fx:id="txtBuscaCelular" layoutX="377.0" layoutY="59.0" prefHeight="25.0" prefWidth="154.0" />
+            <Button fx:id="btBuscar" layoutX="537.0" layoutY="58.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Buscar" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="btLimpar" layoutX="595.0" layoutY="58.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Limpar" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Button fx:id="btAlterar" layoutX="636.0" layoutY="168.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Alterar" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btExcluir" layoutX="636.0" layoutY="202.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: black;" text="Excluir" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="13.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tabelaCliente" layoutX="28.0" layoutY="168.0" prefHeight="374.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="colunaId" minWidth="30.0" prefWidth="40.0" resizable="false" text="ID" />
+          <TableColumn fx:id="colunaNome" maxWidth="178.0" minWidth="130.0" prefWidth="178.0" text="Nome" />
+            <TableColumn fx:id="colunaCpf" maxWidth="108.0" minWidth="50.0" prefWidth="108.0" text="CPF" />
+            <TableColumn fx:id="colunaEmail" maxWidth="201.0" minWidth="100.0" prefWidth="185.0" text="e-Mail" />
+            <TableColumn fx:id="colunaCelular" maxWidth="130.0" minWidth="50.0" prefWidth="88.0" text="Celular" />
+        </columns>
+      </TableView>
+      <StackPane fx:id="stackPaneAlterar" prefHeight="575.0" prefWidth="719.0" visible="false" />
+   </children>
+</AnchorPane>

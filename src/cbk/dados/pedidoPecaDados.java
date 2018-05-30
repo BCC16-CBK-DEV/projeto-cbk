@@ -36,16 +36,16 @@ public class pedidoPecaDados {
         propertyChangeSupport.removePropertyChangeListener(listener);
     }
   
-        private int numeroPedido;
+        private String numeroPedido;
 
     public static final String PROP_NUMEROPEDIDO = "numeroPedido";
 
-    public int getNumeroPedido() {
+    public String getNumeroPedido() {
         return numeroPedido;
     }
 
-    public void setNumeroPedido(int numeroPedido) {
-        int oldNumeroPedido = this.numeroPedido;
+    public void setNumeroPedido(String numeroPedido) {
+        String oldNumeroPedido = this.numeroPedido;
         this.numeroPedido = numeroPedido;
         propertyChangeSupport.firePropertyChange(PROP_NUMEROPEDIDO, oldNumeroPedido, numeroPedido);
     }

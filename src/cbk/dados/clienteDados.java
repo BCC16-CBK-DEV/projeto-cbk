@@ -109,19 +109,20 @@ public class clienteDados {
         propertyChangeSupport.firePropertyChange(PROP_BAIRRO, oldBairro, bairro);
     }
 
-        private int numero;
+        private String numero;
 
     public static final String PROP_NUMERO = "numero";
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
-        int oldNumero = this.numero;
+    public void setNumero(String numero) {
+        String oldNumero = this.numero;
         this.numero = numero;
         propertyChangeSupport.firePropertyChange(PROP_NUMERO, oldNumero, numero);
     }
+
 
         private String email;
 

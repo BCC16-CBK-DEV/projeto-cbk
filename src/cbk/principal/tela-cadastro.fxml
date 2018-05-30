@@ -20,22 +20,58 @@
          <image>
             <Image url="@../../images/ic_cancel_grey600_18dp.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="btCadastrarCliente" fitHeight="74.0" fitWidth="64.0" layoutX="129.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btCadastrarCliente" fitHeight="60.0" fitWidth="64.0" layoutX="137.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/botao-cadastrar-cliente.png" />
+            <Image url="@../../images/ic_person_add_black_48dp.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="btCadastrarOrdemServico" fitHeight="77.0" fitWidth="143.0" layoutX="292.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btCadastrarOrdemServico" fitHeight="60.0" fitWidth="64.0" layoutX="332.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/cadastro-ordem-servico-botao.png" />
+            <Image url="@../../images/ic_insert_drive_file_black_48dp.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="btCadastroPedido" fitHeight="98.0" fitWidth="132.0" layoutX="511.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btCadastroPedido" fitHeight="64.0" fitWidth="64.0" layoutX="541.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/cadastro-peca.png" />
+            <Image url="@../../images/ic_settings_black_48dp.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
+      <Label fx:id="lbPedidoPeca" layoutX="511.0" layoutY="171.0" text="Pedido de Peça">
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbOrdemServico" layoutX="291.0" layoutY="171.0" text="Ordem de Serviço">
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbCliente" layoutX="134.0" layoutY="171.0" text="Clientes">
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
       <StackPane fx:id="stackPane1" prefHeight="575.0" prefWidth="726.0" visible="false" />
    </children>
 </AnchorPane>

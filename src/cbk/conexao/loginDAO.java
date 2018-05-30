@@ -5,6 +5,7 @@
  */
 package cbk.conexao;
 
+import cbk.dados.clienteDados;
 import cbk.dados.loginDados;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,11 +15,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import static javax.swing.UIManager.getInt;
 
-/**
- *
- * @author igorcasconi
- */
 public class loginDAO extends DAO<loginDados> {
 
     @Override
@@ -28,7 +26,7 @@ public class loginDAO extends DAO<loginDados> {
         ResultSet rs = null;
         
         try {
-            stmt = conn.prepareStatement("SELECT a.nome_usuario, a.senha FROM usuario as a WHERE a.nome_usuario = ? AND a.senha = ?;");
+            stmt = conn.prepareStatement("SELECT a.nome_usuario, a.senha FROM usuario as a WHERE BINARY a.nome_usuario = ? AND a.senha = ?;");
             stmt.setString(1,usuario);
             stmt.setString(2,senha);
             
@@ -45,11 +43,6 @@ public class loginDAO extends DAO<loginDados> {
         return checkLogin;
     }
 
-    @Override
-    public boolean inserirCliente(loginDados obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public String Autorizada() {
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -98,26 +91,6 @@ public class loginDAO extends DAO<loginDados> {
     }
 
     @Override
-    public boolean inserirOrdemServico(loginDados obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<String> Nome() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String SelectCpf(int indexSelecionado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int numeroOrdemIncremento() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public int contagemOsAbertas() {
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -137,11 +110,6 @@ public class loginDAO extends DAO<loginDados> {
         }
         
         return contador;
-    }
-
-    @Override
-    public boolean inserirPedido(loginDados obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -179,8 +147,8 @@ public class loginDAO extends DAO<loginDados> {
         List<loginDados> listaDeUsuarios = new LinkedList<>();
         
         try{
-            String sql = "SELECT a.id_usuario, a.nome_usuario, b.nome_departamento FROM usuario AS a LEFT JOIN departamentos AS b"+
-                        "ON a.id_departamento = b.id_departamento";
+            String sql = "SELECT a.id_usuario, a.nome_usuario, b.nome_departamento FROM usuario AS a INNER JOIN departamento AS b "+ 
+                         "ON b.id_departamento = a.id_departamento ORDER BY a.id_usuario;";
             
             stmt = conn.prepareStatement(sql);
             
@@ -225,6 +193,74 @@ public class loginDAO extends DAO<loginDados> {
     }
 
     @Override
+    public boolean atualizarUsuario(loginDados obj) {
+        try{
+            String sql = "UPDATE usuario AS a SET a.nome_usuario = ?, a.senha = ?, a.id_departamento = ? WHERE a.id_usuario = ?;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, obj.getNomeUsuario());
+            stmt.setString(2, obj.getSenhaTexto());
+            stmt.setInt(3, obj.getIdDepartamento()); 
+            stmt.setInt(4, obj.getIdUsuario());
+            
+            if(stmt.executeUpdate() == 1){
+                return true;
+            }
+            
+        }catch(SQLException e){
+            System.out.println("erro: "+e.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean excluirUsuario(loginDados obj) {
+        try {
+            String sql = "DELETE FROM usuario WHERE id_usuario = ?;";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, obj.getIdUsuario());
+            
+            if(stmt.executeUpdate() == 1){
+                return true;
+            }
+        }catch(SQLException e){
+            System.out.println("erro: "+e.getMessage());
+        }
+        return false;
+    }
+    
+    @Override
+    public boolean verificarExistenciaUsuario(String usuario) {
+        try{
+            String sql = "SELECT * FROM usuario AS a WHERE a.nome_usuario = ?;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, usuario);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                return true;
+            }
+        }catch(SQLException e){
+            System.out.println("erro: "+e.getMessage());
+        }
+        return false;
+    }
+    
+    /* ############################################################################################################################################# */
+    /* ############################################################################################################################################# */
+    /* ############################################################################################################################################# */
+    /* ############################################################################################################################################# */
+    /* ############################################################################################################################################# */
+    /* ############################################################################################################################################# */
+    /* MÉTODOS NÃO UTILIZADOS POR ESSA CLASSE */
+    
+     @Override
+    public boolean inserirPedido(loginDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public boolean inserirItemPedido(loginDados obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -235,13 +271,57 @@ public class loginDAO extends DAO<loginDados> {
     }
 
     @Override
-    public int numeroPedidoIncremento() {
+    public String numeroPedidoIncremento() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public boolean inserirOrdemServico(loginDados obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean finalizarGravarDadosPedido(loginDados obj) {
+    public List<clienteDados> Nome(){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-     
+
+    @Override
+    public String SelectCpf(int indexSelecionado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String numeroOrdemIncremento() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<loginDados> clientes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizarCliente(loginDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean excluirCliente(loginDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<loginDados> selectClienteFiltro(String nome, String cpf, String email, String celular, int opcao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public boolean inserirCliente(loginDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<clienteDados> SelectNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

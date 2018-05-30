@@ -116,14 +116,33 @@ public class Pedido_peca_telaController implements Initializable {
             public void handle(MouseEvent event) {
                 if(txtCodigo1.getText().isEmpty() && txtDesc1.getText().isEmpty() && txtQtd1.getText().isEmpty()){ 
                       JOptionPane.showMessageDialog(null,"Não foi inserido informações importantes", "Erro ao Gravar Dados", JOptionPane.ERROR_MESSAGE);
-                } else {
+                } else if(combo_OS.getSelectionModel().getSelectedIndex() == -1){   
+                        JOptionPane.showMessageDialog(null,"Não foi selecionado o número da Ordem de Serviço", "Ordem de Serviço", JOptionPane.ERROR_MESSAGE);
+                }else {
                         pedidoPecaDados pd = new pedidoPecaDados();
                         pedidoPecaDAO pdDAO = new pedidoPecaDAO();
 
-                        int numeroPedido = pdDAO.numeroPedidoIncremento();
+                        String num = pdDAO.numeroPedidoIncremento();
                         int numeroOrdemINDEX = combo_OS.getSelectionModel().getSelectedIndex() + 1;
-
-                        pd.setNumeroPedido(numeroPedido);
+                        
+                        String numeroNovo = null;
+                        int qtd = 0;
+                        int conversor = Integer.parseInt(num);
+                        String aux = null;
+                        conversor++;
+                        aux = Integer.toString(conversor);
+                        qtd = aux.length();
+                        if(qtd == 1){
+                            numeroNovo = "000".concat(aux);
+                        } else if(qtd == 2){
+                            numeroNovo = "00".concat(aux);
+                        } else if(qtd == 3){
+                            numeroNovo = "0".concat(aux);
+                        } else{
+                            numeroNovo = aux;
+                        }
+                        
+                        pd.setNumeroPedido(numeroNovo);
                         pd.setEmailFabricante(txtEmail.getText());
                         pd.setIdOrdem(numeroOrdemINDEX);
 
@@ -308,7 +327,7 @@ public class Pedido_peca_telaController implements Initializable {
 
                             pdDAO.inserirItemPedido(pd);
                         }
-
+                        JOptionPane.showMessageDialog(null,"O seu Pedido foi gravado com Sucesso!","Gravado com Sucesso", JOptionPane.PLAIN_MESSAGE);
                         telaCadastroController.telaCadastroControle.FecharTelaCadastroPedido();
                     } 
                 }

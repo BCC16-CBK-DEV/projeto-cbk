@@ -21,9 +21,9 @@
                   <Image url="@../../images/2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btCadastro" fitHeight="33.0" fitWidth="113.0" layoutX="41.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btCadastro" fitHeight="33.0" fitWidth="113.0" layoutX="31.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/menu-cadastro_.png" />
+                  <Image url="@../../images/menu-cadastro.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -45,7 +45,7 @@
                </font>
             </Label>
             <Label fx:id="txtUsuario_ativo" layoutX="76.0" layoutY="579.0" prefHeight="17.0" prefWidth="101.0" textFill="WHITE" />
-            <ImageView fx:id="btUsuario" fitHeight="48.0" fitWidth="82.0" layoutX="39.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btUsuario" fitHeight="33.0" fitWidth="113.0" layoutX="29.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -53,7 +53,7 @@
                   <Image url="@../../images/menu-usuarios.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btSair" fitHeight="25.0" fitWidth="47.0" layoutX="54.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btSair" fitHeight="33.0" fitWidth="113.0" layoutX="48.0" layoutY="535.0" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -61,6 +61,45 @@
                   <Image url="@../../images/menu-sair.png" />
                </image>
             </ImageView>
+            <Label fx:id="lbCadastros" layoutX="70.0" layoutY="168.0" text="Cadastros" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="lbUsuarios" layoutX="72.0" layoutY="294.0" text="Usuários" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbSair" layoutX="84.0" layoutY="543.0" text="Sair" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="btConsultas" fitHeight="33.0" fitWidth="113.0" layoutX="35.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/menu-consultas.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label fx:id="lbConsultas" layoutX="70.0" layoutY="231.0" text="Consultas" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Label>
          </children>
       </Pane>
       <Pane layoutX="181.0" layoutY="575.0" prefHeight="25.0" prefWidth="719.0">

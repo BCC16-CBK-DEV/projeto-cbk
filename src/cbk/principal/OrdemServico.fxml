@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.CadastroOrdemServicoController">
+   <children>
+      <DatePicker fx:id="txtDataAberturaOS" layoutX="132.0" layoutY="147.0" prefHeight="25.0" prefWidth="109.0" />
+      <TextField fx:id="txtNotaFiscalOS" layoutX="313.0" layoutY="147.0" prefHeight="17.0" prefWidth="94.0" />
+      <DatePicker fx:id="txtDataCompraOS" layoutX="509.0" layoutY="147.0" prefHeight="25.0" prefWidth="120.0" />
+      <TextField fx:id="txtDefeitoOS" layoutX="144.0" layoutY="189.0" prefHeight="25.0" prefWidth="485.0" />
+      <TextField fx:id="txtCodigoOS" layoutX="82.0" layoutY="262.0" prefHeight="25.0" prefWidth="120.0" />
+      <TextField fx:id="txtDescricaoOS" layoutX="265.0" layoutY="262.0" prefHeight="25.0" prefWidth="368.0" />
+      <TextField fx:id="txtVoltagemOS" layoutX="94.0" layoutY="304.0" prefHeight="25.0" prefWidth="109.0" />
+      <TextField fx:id="txtNumeroSerieOS" layoutX="301.0" layoutY="304.0" prefHeight="25.0" prefWidth="332.0" />
+      <Button fx:id="btGravarOS" layoutX="284.0" layoutY="525.0" mnemonicParsing="false" style="-fx-background-color: #000;" text="Gravar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btCancelarOS" layoutX="341.0" layoutY="525.0" mnemonicParsing="false" style="-fx-background-color: #000;" text="Cancelar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Pane layoutX="27.0" layoutY="236.0" prefHeight="15.0" prefWidth="666.0" style="-fx-background-color: #000;">
+         <children>
+            <Label layoutX="266.0" layoutY="-1.0" prefHeight="17.0" prefWidth="135.0" text="Informações do Produto" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="26.0" layoutY="345.0" prefHeight="15.0" prefWidth="666.0" style="-fx-background-color: #000;">
+         <children>
+            <Label layoutX="266.0" layoutY="-1.0" prefHeight="17.0" prefWidth="135.0" text="Informações do Cliente" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="25.0" layoutY="89.0" prefHeight="15.0" prefWidth="666.0" style="-fx-background-color: #000;">
+         <children>
+            <Label layoutX="279.0" layoutY="-1.0" prefHeight="17.0" prefWidth="109.0" text="Informações da OS" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Separator layoutX="34.0" layoutY="49.0" prefHeight="0.0" prefWidth="670.0" />
+      <Label layoutX="34.0" layoutY="14.0" text="Cadastros &gt; Ordem de Serviço" textFill="#cdc5c5">
+         <font>
+            <Font name="Century Gothic Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="59.0" text="Cadastrar Ordem de Serviço" />
+      <Label layoutX="34.0" layoutY="151.0" text="Data de Abertura:" />
+      <Label layoutX="249.0" layoutY="151.0" text="Nota Fiscal:" />
+      <Label layoutX="416.0" layoutY="151.0" text="Data de Compra:" />
+      <Label layoutX="29.0" layoutY="193.0" text="Defeito Reclamando:" />
+      <Label layoutX="35.0" layoutY="308.0" text="Voltagem:" />
+      <Label layoutX="208.0" layoutY="266.0" text="Descrição:" />
+      <Label layoutX="35.0" layoutY="266.0" text="Código:" />
+      <Label layoutX="206.0" layoutY="308.0" text="Número de Série:" />
+      <TextField fx:id="txtCpfOS" layoutX="70.0" layoutY="412.0" prefHeight="25.0" prefWidth="135.0" visible="false" />
+      <Label layoutX="41.0" layoutY="416.0" text="CPF:" visible="false" />
+      <Label layoutX="34.0" layoutY="377.0" text="Nome:" />
+      <TextField fx:id="txtNomeCliente" layoutX="74.0" layoutY="373.0" prefHeight="25.0" prefWidth="283.0" />
+      <ImageView fx:id="btBuscaCliente" fitHeight="25.0" fitWidth="25.0" layoutX="360.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/ic_search_black_36dp.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <TextField fx:id="txtCpfCliente" editable="false" layoutX="428.0" layoutY="373.0" prefHeight="25.0" prefWidth="156.0" />
+      <Label layoutX="399.0" layoutY="377.0" text="CPF:" />
+      <Label fx:id="lbNumeroOs" layoutX="34.0" layoutY="116.0" text="Número da OS:" visible="false" />
+      <Label fx:id="lb_idOS" layoutX="124.0" layoutY="116.0" textFill="#f50505">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </Label>
+      <Pane fx:id="paneCliente" layoutX="42.0" layoutY="138.0" prefHeight="226.0" prefWidth="630.0" style="-fx-background-color: #cdcdcd;" visible="false">
+         <children>
+            <TableView fx:id="tabelaClientes" layoutX="20.0" layoutY="51.0" prefHeight="162.0" prefWidth="509.0">
+              <columns>
+                  <TableColumn fx:id="colunaIdCliente" prefWidth="35.0" text="ID" />
+                <TableColumn fx:id="colunaNomeCliente" prefWidth="327.0" text="Nome" />
+                <TableColumn fx:id="colunaCpf" editable="false" prefWidth="145.0" text="CPF" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Label layoutX="20.0" layoutY="14.0" text="Busca de Cliente:">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtBuscaNome" layoutX="155.0" layoutY="13.0" prefHeight="25.0" prefWidth="374.0" />
+            <Button fx:id="btBuscarClienteTabela" layoutX="535.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #000;" text="Buscar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btSelecionarCliente" layoutX="535.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #000;" text="Selecionar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btCancelarCliente" layoutX="535.0" layoutY="83.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #000;" text="Cancelar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
