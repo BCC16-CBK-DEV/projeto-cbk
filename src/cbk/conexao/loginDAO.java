@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cbk.conexao;
 
 import cbk.dados.clienteDados;
+import cbk.dados.itemPedidoPecaDados;
 import cbk.dados.loginDados;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,15 +20,17 @@ public class loginDAO extends DAO<loginDados> {
         boolean checkLogin = false;
         PreparedStatement stmt = null;
         ResultSet rs = null;
+        loginDados c = new loginDados();
         
         try {
-            stmt = conn.prepareStatement("SELECT a.nome_usuario, a.senha FROM usuario as a WHERE BINARY a.nome_usuario = ? AND a.senha = ?;");
+            stmt = conn.prepareStatement("SELECT a.id_usuario, a.nome_usuario, a.senha FROM usuario as a WHERE BINARY a.nome_usuario = ? AND a.senha = ?;");
             stmt.setString(1,usuario);
             stmt.setString(2,senha);
             
             rs = stmt.executeQuery();
             
             while(rs.next()){
+                c.setIdUsuario(rs.getInt("id_usuario"));
                 checkLogin = true;
             }
         } catch(SQLException e) {
@@ -118,12 +116,13 @@ public class loginDAO extends DAO<loginDados> {
         ResultSet rs = null;
         
         try {
-            String sql = "INSERT INTO usuario (nome_usuario, senha, id_departamento)"+
-                         "VALUES (?,?,?)";
+            String sql = "INSERT INTO usuario (nome_usuario, senha, nome_completo, id_departamento)"+
+                         "VALUES (?,?,?,?)";
             stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1,obj.getNomeUsuario());
             stmt.setString(2,obj.getSenhaTexto());
-            stmt.setInt(3,obj.getIdDepartamento());
+            stmt.setString(3, obj.getNome_completo());
+            stmt.setInt(4,obj.getIdDepartamento());
             
             
             if(stmt.executeUpdate() == 1){
@@ -147,7 +146,7 @@ public class loginDAO extends DAO<loginDados> {
         List<loginDados> listaDeUsuarios = new LinkedList<>();
         
         try{
-            String sql = "SELECT a.id_usuario, a.nome_usuario, b.nome_departamento FROM usuario AS a INNER JOIN departamento AS b "+ 
+            String sql = "SELECT a.id_usuario, a.nome_usuario, a.nome_completo, b.nome_departamento FROM usuario AS a INNER JOIN departamento AS b "+ 
                          "ON b.id_departamento = a.id_departamento ORDER BY a.id_usuario;";
             
             stmt = conn.prepareStatement(sql);
@@ -158,6 +157,7 @@ public class loginDAO extends DAO<loginDados> {
                 loginDados c = new loginDados();
                 c.setIdUsuario(rs.getInt("id_usuario"));
                 c.setNomeUsuario(rs.getString("nome_usuario"));
+                c.setNome_completo(rs.getString("nome_completo"));
                 c.setNome_departamento(rs.getString("nome_departamento"));
                 
                 listaDeUsuarios.add(c);
@@ -247,6 +247,28 @@ public class loginDAO extends DAO<loginDados> {
         return false;
     }
     
+    @Override
+    public int contagemOsFechadas() {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int contador = 0;
+        
+        try{
+            stmt = conn.prepareStatement("SELECT count(*) FROM ordem_servico WHERE id_status = 2;");
+            
+            rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                contador = rs.getInt(1);
+            }
+            
+        }catch(SQLException e){
+            System.out.println("erro: "+e.getMessage());
+        }
+        
+        return contador;
+    }
+    
     /* ############################################################################################################################################# */
     /* ############################################################################################################################################# */
     /* ############################################################################################################################################# */
@@ -266,11 +288,6 @@ public class loginDAO extends DAO<loginDados> {
     }
 
     @Override
-    public List<Integer> ordemServico() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public String numeroPedidoIncremento() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -286,7 +303,7 @@ public class loginDAO extends DAO<loginDados> {
     }
 
     @Override
-    public String SelectCpf(int indexSelecionado) {
+    public List<String> status() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -324,4 +341,50 @@ public class loginDAO extends DAO<loginDados> {
     public List<clienteDados> SelectNome(String nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<String> ordemServicoNum() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<loginDados> ordemServico() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizarOS(loginDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int tecnico(String user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<loginDados> historico(int idOS) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<loginDados> selectOrdemServicoFiltro(String numeroOS, String notaFiscal, String data, String nome, int comboStatus, int opcao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean excluirOrdem(loginDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<loginDados> pedidoPeca() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<itemPedidoPecaDados> itemPedidoPeca(int idpeca) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

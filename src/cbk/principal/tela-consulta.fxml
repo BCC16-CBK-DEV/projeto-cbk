@@ -40,6 +40,38 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <ImageView fx:id="btOrdem" fitHeight="54.0" fitWidth="59.0" layoutX="324.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/ic_insert_drive_file_black_48dp.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label fx:id="lbOrdem" layoutX="277.0" layoutY="189.0" text="Ordem de Serviço">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="btPedido" fitHeight="92.0" fitWidth="59.0" layoutX="510.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/ic_settings_black_48dp.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label fx:id="lbPedido" layoutX="477.0" layoutY="189.0" text="Pedido de Peça">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+      </Label>
       <StackPane fx:id="stackPaneConsulta" prefHeight="575.0" prefWidth="719.0" visible="false" />
    </children>
 </AnchorPane>

@@ -252,7 +252,7 @@ public class TelaConsultaClienteController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
             if(!tabelaCliente.getSelectionModel().isEmpty()){    
-                int escolha = JOptionPane.showConfirmDialog(null,"Deseja realmente excluir este usuário?", "Excluir Usuário", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                int escolha = JOptionPane.showConfirmDialog(null,"Deseja realmente excluir este cliente?", "Excluir Cliente", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 if(escolha == JOptionPane.YES_OPTION){
                   clienteDados c2 = (clienteDados) tabelaCliente.getSelectionModel().getSelectedItem();
                   c1.excluirCliente(c2);
@@ -293,14 +293,13 @@ public class TelaConsultaClienteController implements Initializable {
         
         });
         
-        
         // Tabela de cliente
         colunaId.setCellValueFactory(new PropertyValueFactory<>("idcliente"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome_cliente"));
         colunaCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         colunaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colunaCelular.setCellValueFactory(new PropertyValueFactory<>("celular"));
-        atualizarTabela();
+        atualizarTabela();  
         
     }    
     

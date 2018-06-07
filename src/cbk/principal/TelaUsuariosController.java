@@ -38,6 +38,7 @@ public class TelaUsuariosController implements Initializable {
     @FXML private Button btGravarNovoUsuario;
     @FXML private Button btCancelarCadastro;
     @FXML private TextField txtUsuario_Cadastro;
+    @FXML private TextField txtNomeCompleto;
     @FXML private PasswordField txtSenha_Cadastro;
     @FXML private ComboBox<String> comboDepartamento;
     @FXML private TableView<loginDados> tabelaUsuarios;
@@ -96,6 +97,7 @@ public class TelaUsuariosController implements Initializable {
                         if(!c1.verificarExistenciaUsuario(txtUsuario_Cadastro.getText())){
                             c.setNomeUsuario(txtUsuario_Cadastro.getText());
                             c.setSenhaTexto(txtSenha_Cadastro.getText());
+                            c.setNome_completo(txtNomeCompleto.getText());
                             c.setIdDepartamento(departamentoIndex);
                             c1.inserirUsuario(c);
                             JOptionPane.showMessageDialog(null,"O usuário foi gravado com Sucesso!","Gravado com Sucesso", JOptionPane.PLAIN_MESSAGE);
@@ -117,6 +119,7 @@ public class TelaUsuariosController implements Initializable {
                             c.setIdUsuario(idUser);
                             c.setNomeUsuario(txtUsuario_Cadastro.getText());
                             c.setSenhaTexto(txtSenha_Cadastro.getText());
+                            c.setNome_completo(txtNomeCompleto.getText());
                             c.setIdDepartamento(departamentoIndex);
 
                             c1.atualizarUsuario(c);
@@ -129,7 +132,16 @@ public class TelaUsuariosController implements Initializable {
                             atualizarTabela();
                     }
                 }
+                loginController.loginTela.btCadastro.setDisable(false);
+                loginController.loginTela.btUsuario.setDisable(false);
+                loginController.loginTela.btSair.setVisible(false);
+                loginController.loginTela.lbSair.setVisible(false);
+                loginController.loginTela.lbCadastros.setDisable(false);
+                loginController.loginTela.btConsultas.setDisable(false);
+                loginController.loginTela.lbConsultas.setDisable(false);
+                loginController.loginTela.lbUsuarios.setDisable(false);
             }
+            
         });
         
         /* Botão para alterar usuário */
@@ -143,6 +155,7 @@ public class TelaUsuariosController implements Initializable {
                     loginDados c2 = tabelaUsuarios.getSelectionModel().getSelectedItem();                  
                     idUser = c2.getIdUsuario();
                     txtUsuario_Cadastro.setText(c2.getNomeUsuario()); 
+                    txtNomeCompleto.setText(c2.getNome_completo());
                     comboDepartamento.setValue((c2.getNome_departamento()));
                     loginController.loginTela.btCadastro.setDisable(true);
                     loginController.loginTela.btUsuario.setDisable(true);
@@ -178,6 +191,14 @@ public class TelaUsuariosController implements Initializable {
                     txtSenha_Cadastro.setText(null);
                     paneUsuario.setVisible(false);
                     btFecharUsuario.setVisible(true);
+                    loginController.loginTela.btCadastro.setDisable(false);
+                    loginController.loginTela.btUsuario.setDisable(false);
+                    loginController.loginTela.btSair.setVisible(false);
+                    loginController.loginTela.lbSair.setVisible(false);
+                    loginController.loginTela.lbCadastros.setDisable(false);
+                    loginController.loginTela.btConsultas.setDisable(false);
+                    loginController.loginTela.lbConsultas.setDisable(false);
+                    loginController.loginTela.lbUsuarios.setDisable(false);
               } 
             }
         });

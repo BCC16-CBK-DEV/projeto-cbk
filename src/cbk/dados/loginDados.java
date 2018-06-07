@@ -1,18 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cbk.dados;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-/**
- *
- * @author igorcasconi
- */
 public class loginDados {
+    
+        private String nome_completo;
+
+    public static final String PROP_NOME_COMPLETO = "nome_completo";
+
+    public String getNome_completo() {
+        return nome_completo;
+    }
+
+    public void setNome_completo(String nome_completo) {
+        String oldNome_completo = this.nome_completo;
+        this.nome_completo = nome_completo;
+        propertyChangeSupport.firePropertyChange(PROP_NOME_COMPLETO, oldNome_completo, nome_completo);
+    }
+
     
     private String nomeUsuario;
 

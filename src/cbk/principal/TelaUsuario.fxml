@@ -62,16 +62,19 @@
                </font>
             </Label>
             <Separator layoutX="31.0" layoutY="48.0" prefHeight="3.0" prefWidth="612.0" />
-            <Label layoutX="138.0" layoutY="111.0" text="Nome de Usuario:" />
-            <Label layoutX="138.0" layoutY="173.0" text="Senha:" />
-            <TextField fx:id="txtUsuario_Cadastro" layoutX="138.0" layoutY="128.0" prefHeight="25.0" prefWidth="294.0" style="-fx-background-color: white;" />
-            <PasswordField fx:id="txtSenha_Cadastro" layoutX="138.0" layoutY="190.0" prefHeight="25.0" prefWidth="294.0" style="-fx-background-color: white;" />
-            <Separator layoutX="138.0" layoutY="153.0" prefHeight="3.0" prefWidth="294.0" style="-fx-background-color: black;" />
-            <Separator layoutX="139.0" layoutY="212.0" prefHeight="3.0" prefWidth="294.0" style="-fx-background-color: black;" />
-            <ComboBox fx:id="comboDepartamento" layoutX="138.0" layoutY="250.0" prefHeight="25.0" prefWidth="294.0" />
-            <Label layoutX="138.0" layoutY="228.0" text="Departamentos:" />
-            <Button fx:id="btGravarNovoUsuario" layoutX="234.0" layoutY="292.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Gravar" textFill="#f5f5f5" />
-            <Button fx:id="btCancelarCadastro" layoutX="295.0" layoutY="292.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Cancelar" textFill="#f5f5f5" />
+            <Label layoutX="138.0" layoutY="117.0" text="Nome de Usuario:" />
+            <Label layoutX="138.0" layoutY="179.0" text="Senha:" />
+            <TextField fx:id="txtUsuario_Cadastro" layoutX="138.0" layoutY="134.0" prefHeight="25.0" prefWidth="294.0" style="-fx-background-color: white;" />
+            <PasswordField fx:id="txtSenha_Cadastro" layoutX="138.0" layoutY="196.0" prefHeight="25.0" prefWidth="294.0" style="-fx-background-color: white;" />
+            <Separator layoutX="138.0" layoutY="159.0" prefHeight="3.0" prefWidth="294.0" style="-fx-background-color: black;" />
+            <Separator layoutX="139.0" layoutY="218.0" prefHeight="3.0" prefWidth="294.0" style="-fx-background-color: black;" />
+            <ComboBox fx:id="comboDepartamento" layoutX="138.0" layoutY="256.0" prefHeight="25.0" prefWidth="294.0" />
+            <Label layoutX="138.0" layoutY="234.0" text="Departamentos:" />
+            <Button fx:id="btGravarNovoUsuario" layoutX="234.0" layoutY="298.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Gravar" textFill="#f5f5f5" />
+            <Button fx:id="btCancelarCadastro" layoutX="295.0" layoutY="298.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Cancelar" textFill="#f5f5f5" />
+            <Separator layoutX="138.0" layoutY="100.0" prefHeight="3.0" prefWidth="294.0" style="-fx-background-color: black;" />
+            <TextField fx:id="txtNomeCompleto" layoutX="138.0" layoutY="75.0" prefHeight="25.0" prefWidth="294.0" style="-fx-background-color: white;" />
+            <Label layoutX="138.0" layoutY="58.0" text="Nome Completo:" />
          </children>
       </Pane>
    </children>

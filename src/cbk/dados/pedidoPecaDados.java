@@ -134,6 +134,19 @@ public class pedidoPecaDados {
         propertyChangeSupport.firePropertyChange(PROP_IDORDEM, oldIdOrdem, idOrdem);
     }
 
+        private String numero_ordem;
+
+    public static final String PROP_NUMERO_ORDEM = "numero_ordem";
+
+    public String getNumero_ordem() {
+        return numero_ordem;
+    }
+
+    public void setNumero_ordem(String numero_ordem) {
+        String oldNumero_ordem = this.numero_ordem;
+        this.numero_ordem = numero_ordem;
+        propertyChangeSupport.firePropertyChange(PROP_NUMERO_ORDEM, oldNumero_ordem, numero_ordem);
+    }
 
 
 }

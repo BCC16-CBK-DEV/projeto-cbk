@@ -51,8 +51,6 @@ public class OrdemServicoDados {
         propertyChangeSupport.firePropertyChange(PROP_NUMERO_ORDEM, oldNumero_ordem, numero_ordem);
     }
 
-
-
         private String nota_fiscal;
 
     public static final String PROP_NOTA_FISCAL = "nota_fiscal";
@@ -196,5 +194,159 @@ public class OrdemServicoDados {
         propertyChangeSupport.firePropertyChange(PROP_CPFOS, oldCpfOS, CpfOS);
     }
 
+        private String nome_clienteOS;
+
+    public static final String PROP_NOME_CLIENTEOS = "nome_clienteOS";
+
+    public String getNome_clienteOS() {
+        return nome_clienteOS;
+    }
+
+    public void setNome_clienteOS(String nome_clienteOS) {
+        String oldNome_clienteOS = this.nome_clienteOS;
+        this.nome_clienteOS = nome_clienteOS;
+        propertyChangeSupport.firePropertyChange(PROP_NOME_CLIENTEOS, oldNome_clienteOS, nome_clienteOS);
+    }
+
+        private String status_os;
+
+    public static final String PROP_STATUS_OS = "status_os";
+
+    public String getStatus_os() {
+        return status_os;
+    }
+
+    public void setStatus_os(String status_os) {
+        String oldStatus_os = this.status_os;
+        this.status_os = status_os;
+        propertyChangeSupport.firePropertyChange(PROP_STATUS_OS, oldStatus_os, status_os);
+    }
+
+        private String data_abertura_texto;
+
+    public static final String PROP_DATA_ABERTURA_TEXTO = "data_abertura_texto";
+
+    public String getData_abertura_texto() {
+        return data_abertura_texto;
+    }
+
+    public void setData_abertura_texto(String data_abertura_texto) {
+        String oldData_abertura_texto = this.data_abertura_texto;
+        this.data_abertura_texto = data_abertura_texto;
+        propertyChangeSupport.firePropertyChange(PROP_DATA_ABERTURA_TEXTO, oldData_abertura_texto, data_abertura_texto);
+    }
+
+        private String data_compra_texto;
+
+    public static final String PROP_DATA_COMPRA_TEXTO = "data_compra_texto";
+
+    public String getData_compra_texto() {
+        return data_compra_texto;
+    }
+
+    public void setData_compra_texto(String data_compra_texto) {
+        String oldData_compra_texto = this.data_compra_texto;
+        this.data_compra_texto = data_compra_texto;
+        propertyChangeSupport.firePropertyChange(PROP_DATA_COMPRA_TEXTO, oldData_compra_texto, data_compra_texto);
+    }
+
+        private int id_status;
+
+    public static final String PROP_ID_STATUS = "id_status";
+
+    public int getId_status() {
+        return id_status;
+    }
+
+    public void setId_status(int id_status) {
+        int oldId_status = this.id_status;
+        this.id_status = id_status;
+        propertyChangeSupport.firePropertyChange(PROP_ID_STATUS, oldId_status, id_status);
+    }
+
+           private int tecnico;
+
+    public static final String PROP_TECNICO = "tecnico";
+
+    public int getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(int tecnico) {
+        int oldTecnico = this.tecnico;
+        this.tecnico = tecnico;
+        propertyChangeSupport.firePropertyChange(PROP_TECNICO, oldTecnico, tecnico);
+    }
+
+        private String observacao;
+
+    public static final String PROP_OBSERVACAO = "observacao";
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        String oldObservacao = this.observacao;
+        this.observacao = observacao;
+        propertyChangeSupport.firePropertyChange(PROP_OBSERVACAO, oldObservacao, observacao);
+    }
+
+        private String nome_tecnico;
+
+    public static final String PROP_NOME_TECNICO = "nome_tecnico";
+
+    public String getNome_tecnico() {
+        return nome_tecnico;
+    }
+
+    public void setNome_tecnico(String nome_tecnico) {
+        String oldNome_tecnico = this.nome_tecnico;
+        this.nome_tecnico = nome_tecnico;
+        propertyChangeSupport.firePropertyChange(PROP_NOME_TECNICO, oldNome_tecnico, nome_tecnico);
+    }
+
+
+        private int id_historico;
+
+    public static final String PROP_ID_HISTORICO = "id_historico";
+
+    public int getId_historico() {
+        return id_historico;
+    }
+
+    public void setId_historico(int id_historico) {
+        int oldId_historico = this.id_historico;
+        this.id_historico = id_historico;
+        propertyChangeSupport.firePropertyChange(PROP_ID_HISTORICO, oldId_historico, id_historico);
+    }
     
+        private Date data_historico;
+
+    public static final String PROP_DATA_HISTORICO = "data_historico";
+
+    public Date getData_historico() {
+        return data_historico;
+    }
+
+    public void setData_historico(Date data_historico) {
+        Date oldData_historico = this.data_historico;
+        this.data_historico = data_historico;
+        propertyChangeSupport.firePropertyChange(PROP_DATA_HISTORICO, oldData_historico, data_historico);
+    }
+
+        private String data_historico_texto;
+
+    public static final String PROP_DATA_HISTORICO_TEXTO = "data_historico_texto";
+
+    public String getData_historico_texto() {
+        return data_historico_texto;
+    }
+
+    public void setData_historico_texto(String data_historico_texto) {
+        String oldData_historico_texto = this.data_historico_texto;
+        this.data_historico_texto = data_historico_texto;
+        propertyChangeSupport.firePropertyChange(PROP_DATA_HISTORICO_TEXTO, oldData_historico_texto, data_historico_texto);
+    }
+
 }

@@ -20,6 +20,9 @@
          <image>
             <Image url="@../../images/ic_cancel_grey600_18dp.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <Pane layoutX="28.0" layoutY="57.0" prefHeight="101.0" prefWidth="664.0" style="-fx-background-color: #cdcdcd;">
          <children>
@@ -40,11 +43,17 @@
                <font>
                   <Font name="Calibri Bold" size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="btLimpar" layoutX="595.0" layoutY="58.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Limpar" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </Pane>
@@ -52,11 +61,17 @@
          <font>
             <Font name="Calibri Bold" size="13.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button fx:id="btExcluir" layoutX="636.0" layoutY="202.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: black;" text="Excluir" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="13.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <TableView fx:id="tabelaCliente" layoutX="28.0" layoutY="168.0" prefHeight="374.0" prefWidth="600.0">
         <columns>

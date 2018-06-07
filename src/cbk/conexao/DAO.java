@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cbk.conexao;
 
 import cbk.dados.clienteDados;
+import cbk.dados.itemPedidoPecaDados;
 import cbk.dados.loginDados;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -43,14 +39,24 @@ public abstract class DAO<T>{
     public abstract boolean inserirOrdemServico(T obj);   
     public abstract List<clienteDados> Nome();
     public abstract List<clienteDados> SelectNome(String nome);
-    public abstract String SelectCpf(int indexSelecionado);
+    public abstract List<String> status();
     public abstract String numeroOrdemIncremento();
+    public abstract List<T> ordemServico();
+    public abstract boolean atualizarOS(T obj);
+    public abstract int tecnico(String user);
+    public abstract List<T> historico(int idOS); 
+    public abstract boolean excluirOrdem(T obj);
+    public abstract List<T> selectOrdemServicoFiltro(String numeroOS, String notaFiscal, String data, String nome, 
+    							             int comboStatus, int opcao); 
+    
 
     /* Utilizado pela Classe pedidoPecaDAO */
     public abstract String numeroPedidoIncremento();
     public abstract boolean inserirPedido(T obj);
     public abstract boolean inserirItemPedido(T obj);
-    public abstract List<Integer> ordemServico();
+    public abstract List<String> ordemServicoNum();
+    public abstract List<T> pedidoPeca();
+    public abstract List<itemPedidoPecaDados> itemPedidoPeca(int idpeca);
     
     /* Utilizado pela Clasee loginDAO*/
     public abstract boolean verificaLogin(String usuario, String senha);
@@ -61,6 +67,7 @@ public abstract class DAO<T>{
     public abstract List<String> departamentos();
     public abstract String Versao();
     public abstract int contagemOsAbertas();
+    public abstract int contagemOsFechadas();
     public abstract List<T> usuarios();
     public abstract String Autorizada();
 }

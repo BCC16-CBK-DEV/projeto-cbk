@@ -18,12 +18,12 @@
       <TextField fx:id="txtDescricaoOS" layoutX="265.0" layoutY="262.0" prefHeight="25.0" prefWidth="368.0" />
       <TextField fx:id="txtVoltagemOS" layoutX="94.0" layoutY="304.0" prefHeight="25.0" prefWidth="109.0" />
       <TextField fx:id="txtNumeroSerieOS" layoutX="301.0" layoutY="304.0" prefHeight="25.0" prefWidth="332.0" />
-      <Button fx:id="btGravarOS" layoutX="284.0" layoutY="525.0" mnemonicParsing="false" style="-fx-background-color: #000;" text="Gravar" textFill="WHITE">
+      <Button fx:id="btGravarOS" layoutX="285.0" layoutY="538.0" mnemonicParsing="false" style="-fx-background-color: #000;" text="Gravar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btCancelarOS" layoutX="341.0" layoutY="525.0" mnemonicParsing="false" style="-fx-background-color: #000;" text="Cancelar" textFill="WHITE">
+      <Button fx:id="btCancelarOS" layoutX="342.0" layoutY="538.0" mnemonicParsing="false" style="-fx-background-color: #000;" text="Cancelar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -42,13 +42,13 @@
             <Label layoutX="279.0" layoutY="-1.0" prefHeight="17.0" prefWidth="109.0" text="Informações da OS" textFill="WHITE" />
          </children>
       </Pane>
-      <Separator layoutX="34.0" layoutY="49.0" prefHeight="0.0" prefWidth="670.0" />
-      <Label layoutX="34.0" layoutY="14.0" text="Cadastros &gt; Ordem de Serviço" textFill="#cdc5c5">
+      <Separator layoutX="20.0" layoutY="49.0" prefHeight="0.0" prefWidth="670.0" />
+      <Label fx:id="lbOrdemServico" layoutX="30.0" layoutY="14.0" text="Cadastros &gt; Ordem de Serviço" textFill="#cdc5c5">
          <font>
             <Font name="Century Gothic Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="59.0" text="Cadastrar Ordem de Serviço" />
+      <Label fx:id="lbTextoOrdem" layoutX="34.0" layoutY="59.0" text="Cadastrar Ordem de Serviço" />
       <Label layoutX="34.0" layoutY="151.0" text="Data de Abertura:" />
       <Label layoutX="249.0" layoutY="151.0" text="Nota Fiscal:" />
       <Label layoutX="416.0" layoutY="151.0" text="Data de Compra:" />
@@ -57,8 +57,6 @@
       <Label layoutX="208.0" layoutY="266.0" text="Descrição:" />
       <Label layoutX="35.0" layoutY="266.0" text="Código:" />
       <Label layoutX="206.0" layoutY="308.0" text="Número de Série:" />
-      <TextField fx:id="txtCpfOS" layoutX="70.0" layoutY="412.0" prefHeight="25.0" prefWidth="135.0" visible="false" />
-      <Label layoutX="41.0" layoutY="416.0" text="CPF:" visible="false" />
       <Label layoutX="34.0" layoutY="377.0" text="Nome:" />
       <TextField fx:id="txtNomeCliente" layoutX="74.0" layoutY="373.0" prefHeight="25.0" prefWidth="283.0" />
       <ImageView fx:id="btBuscaCliente" fitHeight="25.0" fitWidth="25.0" layoutX="360.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
@@ -71,12 +69,14 @@
       </ImageView>
       <TextField fx:id="txtCpfCliente" editable="false" layoutX="428.0" layoutY="373.0" prefHeight="25.0" prefWidth="156.0" />
       <Label layoutX="399.0" layoutY="377.0" text="CPF:" />
-      <Label fx:id="lbNumeroOs" layoutX="34.0" layoutY="116.0" text="Número da OS:" visible="false" />
-      <Label fx:id="lb_idOS" layoutX="124.0" layoutY="116.0" textFill="#f50505">
+      <Label fx:id="lbNumeroOs" layoutX="34.0" layoutY="116.0" text="Número da Ordem de Serviço:" visible="false" />
+      <Label fx:id="lb_idOS" layoutX="201.0" layoutY="116.0" text="0000" textFill="#f50505" visible="false">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
       </Label>
+      <Label fx:id="lbStatus" layoutX="439.0" layoutY="116.0" text="Status:" visible="false" />
+      <ComboBox fx:id="cbStatus" layoutX="478.0" layoutY="112.0" prefWidth="150.0" visible="false" />
       <Pane fx:id="paneCliente" layoutX="42.0" layoutY="138.0" prefHeight="226.0" prefWidth="630.0" style="-fx-background-color: #cdcdcd;" visible="false">
          <children>
             <TableView fx:id="tabelaClientes" layoutX="20.0" layoutY="51.0" prefHeight="162.0" prefWidth="509.0">
@@ -110,6 +110,50 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+         </children>
+      </Pane>
+      <TextArea fx:id="txtObservacao" layoutX="278.0" layoutY="425.0" prefHeight="85.0" prefWidth="413.0" visible="false" />
+      <Label fx:id="lbObservacao" layoutX="275.0" layoutY="408.0" text="Observação do Conserto:" visible="false" />
+      <TextField fx:id="txtTecnico" editable="false" layoutX="74.0" layoutY="425.0" prefHeight="25.0" prefWidth="193.0" visible="false" />
+      <Label fx:id="lbTecnico" layoutX="28.0" layoutY="429.0" text="Técnico:" visible="false" />
+      <ImageView fx:id="btHistorico" fitHeight="30.0" fitWidth="30.0" layoutX="134.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/ic_folder_shared_black_36dp.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label fx:id="lbHistorico" layoutX="94.0" layoutY="489.0" text="Histórico de Alteração" visible="false">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Pane fx:id="paneHistorico" layoutX="109.0" layoutY="183.0" prefHeight="200.0" prefWidth="440.0" style="-fx-background-color: #cdcdcd;" visible="false">
+         <children>
+            <TableView fx:id="tabelaHistorico" layoutX="12.0" layoutY="31.0" prefHeight="152.0" prefWidth="413.0">
+              <columns>
+                <TableColumn fx:id="colunaIdHistorico" prefWidth="38.0" text="ID" />
+                <TableColumn fx:id="colunaNomeTecnico" prefWidth="252.0" text="Nome do Técnico" />
+                  <TableColumn fx:id="colunaData" prefWidth="122.0" text="Data de Alteração" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Label layoutX="14.0" layoutY="8.0" text="Histórico de Alterações na Ordem de Serviço">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="btFecharHistorico" fitHeight="25.0" fitWidth="25.0" layoutX="401.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <image>
+                  <Image url="@../../images/ic_cancel_grey600_18dp.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

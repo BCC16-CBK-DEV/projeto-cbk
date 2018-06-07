@@ -9,6 +9,7 @@ import cbk.conexao.pedidoPecaDAO;
 import cbk.dados.pedidoPecaDados;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,6 +73,8 @@ public class telaCadastroController implements Initializable {
             try {
                 telaCadastroOS = FXMLLoader.load(telaCadastroController.this.getClass().getResource("OrdemServico.fxml"));
                 stackPane1.getChildren().add(telaCadastroOS);
+                CadastroOrdemServicoController.cadastroOrdemServicoTela.lbOrdemServico.setText("Cadastros > Ordem de Serviço");
+                CadastroOrdemServicoController.cadastroOrdemServicoTela.lbTextoOrdem.setText("Cadastrar Ordem de Serviço");
                 loginController.loginTela.btCadastro.setDisable(true);
                 loginController.loginTela.btUsuario.setDisable(true);
                 loginController.loginTela.btSair.setVisible(false);
@@ -136,9 +139,14 @@ public class telaCadastroController implements Initializable {
     public void FecharTelaCadastroPedido (){
         stackPane1.getChildren().remove(TelaCadastroPedido);
         stackPane1.setVisible(false);
-        loginController.loginTela.btSair.setVisible(true);
-        loginController.loginTela.btCadastro.setDisable(false);
-        loginController.loginTela.btUsuario.setDisable(false);    
+        loginController.loginTela.btCadastro.setDisable(true);
+        loginController.loginTela.btUsuario.setDisable(true);
+        loginController.loginTela.btSair.setVisible(false);
+        loginController.loginTela.lbSair.setVisible(false);
+        loginController.loginTela.lbCadastros.setDisable(true);
+        loginController.loginTela.btConsultas.setDisable(true);
+        loginController.loginTela.lbConsultas.setDisable(true);
+        loginController.loginTela.lbUsuarios.setDisable(true);    
     }
     
     
@@ -163,12 +171,15 @@ public class telaCadastroController implements Initializable {
         btCadastrarOrdemServico.setOnMouseClicked((MouseEvent event) -> {
             stackPane1.setVisible(true);
             carregarFXML_OS();
+            // Seta a data atual para o campo Data Abertura da OS
+            CadastroOrdemServicoController.cadastroOrdemServicoTela.txtDataAberturaOS.setValue(LocalDate.now());
         });
         
         /* Ação do label abrir tela de Cadastro de Ordem de Serviço */
         lbOrdemServico.setOnMouseClicked((MouseEvent event) -> {
             stackPane1.setVisible(true);
             carregarFXML_OS();
+            CadastroOrdemServicoController.cadastroOrdemServicoTela.txtDataAberturaOS.setValue(LocalDate.now());
         });
         
         /* Ação de botão de fechar tela de Cadastro */

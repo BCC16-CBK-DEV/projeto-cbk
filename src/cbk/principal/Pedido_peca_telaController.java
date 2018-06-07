@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cbk.principal;
 
 import cbk.conexao.pedidoPecaDAO;
 import cbk.dados.pedidoPecaDados;
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -20,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import static javafx.scene.input.KeyCode.E;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 
@@ -49,7 +46,7 @@ public class Pedido_peca_telaController implements Initializable {
     @FXML private Button btCancelar;
     @FXML private TextField txtEmail;
     
-    @FXML ComboBox<Integer> combo_OS;
+    @FXML ComboBox<String> combo_OS;
     int contador = 1;
 
     @Override
@@ -58,7 +55,7 @@ public class Pedido_peca_telaController implements Initializable {
         pedidoPeca = this;
         
         pedidoPecaDAO pdDAO = new pedidoPecaDAO();
-        ObservableList<Integer> opcoes = FXCollections.observableArrayList((pdDAO.ordemServico()));
+        ObservableList<String> opcoes = FXCollections.observableArrayList(pdDAO.ordemServicoNum());
         combo_OS.setItems(opcoes);
         
         btAdicionar.setOnMouseClicked(new EventHandler<MouseEvent>(){

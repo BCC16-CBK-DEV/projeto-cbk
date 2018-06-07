@@ -154,14 +154,14 @@
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
       </Text>
-      <Label fx:id="txtOrdensConcertadas" layoutX="418.0" layoutY="381.0" text="0">
+      <Label fx:id="txtOrdensFechadas" layoutX="425.0" layoutY="381.0" text="0" textFill="#007506">
          <font>
-            <Font name="Century Gothic" size="14.0" />
+            <Font name="Calibri Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="txtOrdensAbertas" layoutX="407.0" layoutY="353.0" text="0" textFill="RED">
+      <Label fx:id="txtOrdensAbertas" layoutX="410.0" layoutY="352.0" text="0" textFill="RED">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Calibri Bold" size="17.0" />
          </font>
       </Label>
       <Label layoutX="214.0" layoutY="381.0" text="Ordens de serviços Consertadas:">
@@ -199,13 +199,18 @@
             <Font name="Century Gothic" size="14.0" />
          </font>
       </Label>
+      <ImageView fitHeight="250.0" fitWidth="300.0" layoutX="434.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/d4b03bab-ad89-4588-be85-6540a1ec67b6.png" />
+         </image>
+      </ImageView>
       <StackPane fx:id="stackPane" layoutX="181.0" prefHeight="575.0" prefWidth="719.0" />
       <ImageView fx:id="imagemFundo" fitHeight="800.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/course.jpg" />
          </image>
       </ImageView>
-      <Pane fx:id="loginPane" layoutX="218.0" layoutY="70.0" prefHeight="461.0" prefWidth="464.0">
+      <Pane fx:id="loginPane" layoutX="218.0" layoutY="48.0" prefHeight="461.0" prefWidth="464.0">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="162.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -214,7 +219,7 @@
             </ImageView>
             <Label layoutX="109.0" layoutY="184.0" text="Usuário" textFill="WHITE">
                <font>
-                  <Font name="Calibri" size="15.0" />
+                  <Font name="Calibri Bold" size="16.0" />
                </font>
             </Label>
             <TextField fx:id="txtUsuario" layoutX="109.0" layoutY="201.0" prefHeight="25.0" prefWidth="265.0" promptText="Digite o nome de Usuário" style="-fx-text-fill: white; -fx-background-color: radial-gradient(#1A7FAE, #1A689F);">
@@ -223,14 +228,17 @@
                </opaqueInsets></TextField>
             <Label layoutX="109.0" layoutY="247.0" text="Senha" textFill="WHITE">
                <font>
-                  <Font name="Calibri" size="15.0" />
+                  <Font name="Calibri Bold" size="16.0" />
                </font>
             </Label>
             <PasswordField fx:id="txtSenha" layoutX="110.0" layoutY="265.0" prefHeight="25.0" prefWidth="265.0" promptText="Digite a senha" style="-fx-background-color: radial-gradient(#1A7FAE, #1A689F); -fx-text-fill: white;" />
             <Button fx:id="btEntrar" layoutX="109.0" layoutY="325.0" mnemonicParsing="false" onAction="#entrarLogin" prefHeight="25.0" prefWidth="265.0" style="-fx-background-color: #000; -fx-text-fill: white;" text="Entrar">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></Button>
+               </cursor>
+               <font>
+                  <Font name="Calibri Bold" size="15.0" />
+               </font></Button>
             <Separator layoutX="109.0" layoutY="225.0" prefHeight="3.0" prefWidth="265.0" />
             <Separator layoutX="109.0" layoutY="289.0" prefHeight="3.0" prefWidth="265.0" />
          </children>

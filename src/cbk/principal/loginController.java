@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cbk.principal;
 
 import cbk.conexao.loginDAO;
@@ -34,7 +29,7 @@ public class loginController implements Initializable {
     public static loginController loginTela;
     
     
-    @FXML private TextField txtUsuario;
+    @FXML TextField txtUsuario;
     @FXML private PasswordField txtSenha;
     @FXML private Pane loginPane;
     @FXML private ImageView imagemFundo;
@@ -46,6 +41,7 @@ public class loginController implements Initializable {
     @FXML private Label txtAutorizada;
     @FXML private Label txtVersao;
     @FXML private Label txtOrdensAbertas;
+    @FXML private Label txtOrdensFechadas;
     @FXML ImageView btSair;
     @FXML Label lbCadastros;
     @FXML Label lbConsultas;
@@ -55,6 +51,8 @@ public class loginController implements Initializable {
     // Variavel para controlar Tela abertas
     boolean checkTelaAberta = false;
     loginDAO c = new loginDAO();
+    public int idUsuarioTecnico = 0;
+    
     /* ação que vai verificar o Login do usuário */
     @FXML 
     private void entrarLogin(ActionEvent event) {    
@@ -66,6 +64,7 @@ public class loginController implements Initializable {
            txtAutorizada.setText(c.Autorizada());
            txtVersao.setText(c.Versao());
            txtOrdensAbertas.setText(String.format("%d", c.contagemOsAbertas()));
+           txtOrdensFechadas.setText(String.format("%d", c.contagemOsFechadas()));
        }
        else {
            JOptionPane.showMessageDialog(null,"Senha ou Usuário INCORRETO","LOGIN", JOptionPane.ERROR_MESSAGE);
@@ -115,6 +114,7 @@ public class loginController implements Initializable {
         btSair.setVisible(true);
         lbSair.setVisible(true);
         txtOrdensAbertas.setText(String.format("%d", c.contagemOsAbertas()));
+        txtOrdensFechadas.setText(String.format("%d", c.contagemOsFechadas()));
     }
     
     /* Método para fechar a tela de Consultas */
@@ -124,6 +124,7 @@ public class loginController implements Initializable {
         btSair.setVisible(true);
         lbSair.setVisible(true);
         txtOrdensAbertas.setText(String.format("%d", c.contagemOsAbertas()));
+        txtOrdensFechadas.setText(String.format("%d", c.contagemOsFechadas()));
     } 
     
     /* Método para fechar a tela de Usuários*/
@@ -133,6 +134,7 @@ public class loginController implements Initializable {
         btSair.setVisible(true);
         lbSair.setVisible(true);
         txtOrdensAbertas.setText(String.format("%d", c.contagemOsAbertas()));
+        txtOrdensFechadas.setText(String.format("%d", c.contagemOsFechadas()));
     }
 
     @Override
@@ -152,6 +154,7 @@ public class loginController implements Initializable {
                         txtAutorizada.setText(c.Autorizada());
                         txtVersao.setText(c.Versao());
                         txtOrdensAbertas.setText(String.format("%d", c.contagemOsAbertas()));
+                        txtOrdensFechadas.setText(String.format("%d", c.contagemOsFechadas()));
                     }
                     else {
                         JOptionPane.showMessageDialog(null,"Senha ou Usuário INCORRETO","LOGIN", JOptionPane.ERROR_MESSAGE);
