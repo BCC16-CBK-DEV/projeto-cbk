@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.TelaAlteracaoPedidoController">
+   <children>
+      <Label layoutX="23.0" layoutY="14.0" text="Consultas &gt; Alterar Pedido de Peça" textFill="#cdcdcd">
+         <font>
+            <Font name="Calibri" size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="23.0" layoutY="44.0" prefHeight="0.0" prefWidth="661.0" />
+      
+      <Label layoutX="60.0" layoutY="61.0" text="Numero da Pedido:" />
+      <Label fx:id="lbNumeroPedido" layoutX="167.0" layoutY="61.0" text="0000" textFill="#ff0909">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="426.0" layoutY="61.0" text="Número da Ordem:" />
+      <TableView fx:id="tabelaItemPedido" editable="true" layoutX="62.0" layoutY="132.0" prefHeight="279.0" prefWidth="569.0">
+        <columns>
+          <TableColumn fx:id="colunaId" prefWidth="44.0" text="ID" />
+          <TableColumn fx:id="colunaCodigo" prefWidth="131.0" text="Código do Produto" />
+            <TableColumn fx:id="colunaDescricao" prefWidth="306.0" text="Descrição" />
+            <TableColumn fx:id="colunaQuantidade" prefWidth="88.0" text="Quantidade" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtEmail" layoutX="181.0" layoutY="423.0" prefHeight="25.0" prefWidth="451.0" />
+      <Label layoutX="62.0" layoutY="427.0" text="e-Mail da Fabricante:" />
+      <Button fx:id="btGravar" layoutX="269.0" layoutY="501.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Gravar" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="63.0" layoutY="103.0" text="Codigo:" />
+      <TextField fx:id="txtCodigo" disable="true" layoutX="107.0" layoutY="99.0" prefHeight="25.0" prefWidth="78.0" />
+      <Label layoutX="194.0" layoutY="103.0" text="Descrição:" />
+      <TextField fx:id="txtDescricao" disable="true" layoutX="253.0" layoutY="99.0" prefHeight="25.0" prefWidth="183.0" />
+      <Label layoutX="444.0" layoutY="103.0" text="Quantidade:" />
+      <TextField fx:id="txtQuantidade" disable="true" layoutX="511.0" layoutY="99.0" prefHeight="25.0" prefWidth="48.0" />
+      <Button fx:id="btAlterar" disable="true" layoutX="566.0" layoutY="98.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: black;" text="Alterar" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btCancelarAlteracao" disable="true" layoutX="635.0" layoutY="98.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: black;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btEditar" layoutX="636.0" layoutY="130.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: black;" text="Editar" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="lbNumeroOrdem" editable="false" layoutX="535.0" layoutY="57.0" prefHeight="25.0" prefWidth="87.0" />
+      <Button fx:id="btCancelar" layoutX="333.0" layoutY="501.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Cancelar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="btBuscarNumeroOrdem" fitHeight="25.0" fitWidth="25.0" layoutX="624.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/ic_search_black_36dp.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="paneNumeroOrdem" layoutX="182.0" layoutY="34.0" prefHeight="192.0" prefWidth="361.0" style="-fx-background-color: #cdcdcd;" visible="false">
+         <children>
+            <Label layoutX="14.0" layoutY="6.0" text="Números da ordem de Serviços:" />
+            <TextField fx:id="txtNumeroBuscaOrdem" layoutX="189.0" layoutY="2.0" prefHeight="25.0" prefWidth="97.0" />
+            <TableView fx:id="tabelaNumeroOrdem" layoutX="14.0" layoutY="34.0" prefHeight="138.0" prefWidth="275.0">
+              <columns>
+                <TableColumn fx:id="colunaIdOrdem" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="colunaNumeroOrdem" prefWidth="198.0" text="Número da Ordem de Serviço" />
+              </columns>
+            </TableView>
+            <Button fx:id="btBuscarNumero" layoutX="294.0" layoutY="3.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: black;" text="Buscar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btSelecionar" layoutX="294.0" layoutY="34.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: black;" text="Selecionar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Calibri Bold" size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="CancelarSelecaoNumero" layoutX="294.0" layoutY="65.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: black;" text="Cancelar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Calibri Bold" size="11.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

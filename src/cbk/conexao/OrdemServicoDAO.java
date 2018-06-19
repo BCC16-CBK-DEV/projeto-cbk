@@ -1417,5 +1417,35 @@ public class OrdemServicoDAO extends DAO<OrdemServicoDados> {
     public List<itemPedidoPecaDados> itemPedidoPeca(int idpeca) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean atualizarPedido(itemPedidoPecaDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizarNumeroOrdem(OrdemServicoDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<OrdemServicoDados> selectFiltroPedido(String numeroPedido, String numeroOrdem, String email, int opcao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<OrdemServicoDados> selectNumeroOrdem(String numeroOrdem) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<OrdemServicoDados> configuracao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizaConfiguracao(OrdemServicoDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

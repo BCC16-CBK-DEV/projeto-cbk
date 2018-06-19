@@ -9,7 +9,7 @@
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="lib\cbk-Preloader.jar" size="2953" download="progress" />
-    <jar href="cbk.jar" size="928747" download="eager" />
+    <jar href="cbk.jar" size="968283" download="eager" />
     <jar href="lib\activation.jar" size="124332" download="eager" />
     <jar href="lib\commons-email-1.1.jar" size="30651" download="eager" />
     <jar href="lib\eclipselink.jar" size="8478776" download="eager" />

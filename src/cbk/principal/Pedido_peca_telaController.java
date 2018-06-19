@@ -1,10 +1,16 @@
 package cbk.principal;
 
+import MascaraDeCampos.MaskFieldUtil;
+import cbk.conexao.OrdemServicoDAO;
 import cbk.conexao.pedidoPecaDAO;
+import cbk.dados.OrdemServicoDados;
+import cbk.dados.itemPedidoPecaDados;
 import cbk.dados.pedidoPecaDados;
+import email.SendMail;
 import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -15,25 +21,30 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import static javafx.scene.input.KeyCode.E;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javax.swing.JOptionPane;
 
 public class Pedido_peca_telaController implements Initializable {
     
-    Pedido_peca_telaController pedidoPeca;
+    public static Pedido_peca_telaController pedidoPeca;
 
-    @FXML private TextField txtCodigo1, txtDesc1, txtQtd1;
-    @FXML private TextField txtCodigo2, txtDesc2, txtQtd2;
-    @FXML private TextField txtCodigo3, txtDesc3, txtQtd3;
-    @FXML private TextField txtCodigo4, txtDesc4, txtQtd4;
-    @FXML private TextField txtCodigo5, txtDesc5, txtQtd5;
-    @FXML private TextField txtCodigo6, txtDesc6, txtQtd6;
-    @FXML private TextField txtCodigo7, txtDesc7, txtQtd7;
-    @FXML private TextField txtCodigo8, txtDesc8, txtQtd8;
-    @FXML private TextField txtCodigo9, txtDesc9, txtQtd9;
-    @FXML private TextField txtCodigo10, txtDesc10, txtQtd10;
+    @FXML TextField txtCodigo1, txtDesc1, txtQtd1;
+    @FXML TextField txtCodigo2, txtDesc2, txtQtd2;
+    @FXML TextField txtCodigo3, txtDesc3, txtQtd3;
+    @FXML TextField txtCodigo4, txtDesc4, txtQtd4;
+    @FXML TextField txtCodigo5, txtDesc5, txtQtd5;
+    @FXML TextField txtCodigo6, txtDesc6, txtQtd6;
+    @FXML TextField txtCodigo7, txtDesc7, txtQtd7;
+    @FXML TextField txtCodigo8, txtDesc8, txtQtd8;
+    @FXML TextField txtCodigo9, txtDesc9, txtQtd9;
+    @FXML TextField txtCodigo10, txtDesc10, txtQtd10;
     
     @FXML private Label lbCodigo6, lbDesc6, lbQtd6;
     @FXML private Label lbCodigo7, lbDesc7, lbQtd7;
@@ -41,22 +52,60 @@ public class Pedido_peca_telaController implements Initializable {
     @FXML private Label lbCodigo9, lbDesc9, lbQtd9;
     @FXML private Label lbCodigo10, lbDesc10, lbQtd10;
     
+    @FXML private TextField txtNumeroOrdem;
+    @FXML private TextField txtNumeroBuscaOrdem;
+    @FXML private ImageView btBuscarNumeroOrdem;
+    @FXML private Pane paneNumeroOrdem;
+    @FXML private Button btBuscarNumero;
+    @FXML private Button btSelecionar;
+    @FXML private Button CancelarSelecaoNumero;
+    @FXML private TableView tabelaNumeroOrdem;
+    @FXML private TableColumn<OrdemServicoDados, Integer> colunaIdOrdem;
+    @FXML private TableColumn<OrdemServicoDados, String> colunaNumeroOrdem;
+    
     @FXML private Button btAdicionar;
     @FXML private Button btGravar;
     @FXML private Button btCancelar;
-    @FXML private TextField txtEmail;
+    @FXML TextField txtEmail;
+    @FXML Label lbPedido;
+    @FXML Label lbTextoPedido;
     
     @FXML ComboBox<String> combo_OS;
-    int contador = 1;
+    public int contador = 1;
+    
+    OrdemServicoDAO OS = new OrdemServicoDAO();
+    pedidoPecaDados ppDados = new pedidoPecaDados();
+    
+    public void atualizarTabelaNumeroOrdem(){
+        ObservableList<OrdemServicoDados> listaOrdem = FXCollections.observableArrayList(OS.ordemServico());
+        tabelaNumeroOrdem.setItems(listaOrdem);
+        tabelaNumeroOrdem.refresh();
+    }
+    
+    MaskFieldUtil mask = new MaskFieldUtil() {};
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        mask.numericField(this.txtQtd1); 
+        mask.numericField(this.txtQtd2);
+        mask.numericField(this.txtQtd3);
+        mask.numericField(this.txtQtd4);
+        mask.numericField(this.txtQtd5);
+        mask.numericField(this.txtQtd6);
+        mask.numericField(this.txtQtd7);
+        mask.numericField(this.txtQtd8);
+        mask.numericField(this.txtQtd9);
+        mask.numericField(this.txtQtd10);
+        
         pedidoPeca = this;
         
+        // Tabela de Item de Numero da Ordem de Serviço
+        colunaIdOrdem.setCellValueFactory(new PropertyValueFactory<>("id_Ordem"));
+        colunaNumeroOrdem.setCellValueFactory(new PropertyValueFactory<>("numero_ordem"));
+        atualizarTabelaNumeroOrdem();
+        
         pedidoPecaDAO pdDAO = new pedidoPecaDAO();
-        ObservableList<String> opcoes = FXCollections.observableArrayList(pdDAO.ordemServicoNum());
-        combo_OS.setItems(opcoes);
         
         btAdicionar.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
@@ -104,6 +153,7 @@ public class Pedido_peca_telaController implements Initializable {
                     contador++;
                 } else if (contador > 5){
                     JOptionPane.showMessageDialog(null,"O total de Itens por pedido são 10, você atingiu o limite!", "Limite excedido",JOptionPane.INFORMATION_MESSAGE);
+                    btAdicionar.setDisable(true);
                 }   
             }
         }); 
@@ -111,16 +161,15 @@ public class Pedido_peca_telaController implements Initializable {
         btGravar.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                if(txtCodigo1.getText().isEmpty() && txtDesc1.getText().isEmpty() && txtQtd1.getText().isEmpty()){ 
+                if(txtCodigo1.getText().isEmpty() || txtDesc1.getText().isEmpty() || txtQtd1.getText().isEmpty()){ 
                       JOptionPane.showMessageDialog(null,"Não foi inserido informações importantes", "Erro ao Gravar Dados", JOptionPane.ERROR_MESSAGE);
-                } else if(combo_OS.getSelectionModel().getSelectedIndex() == -1){   
+                } else if(txtNumeroOrdem.getText().isEmpty()){   
                         JOptionPane.showMessageDialog(null,"Não foi selecionado o número da Ordem de Serviço", "Ordem de Serviço", JOptionPane.ERROR_MESSAGE);
                 }else {
                         pedidoPecaDados pd = new pedidoPecaDados();
                         pedidoPecaDAO pdDAO = new pedidoPecaDAO();
 
                         String num = pdDAO.numeroPedidoIncremento();
-                        int numeroOrdemINDEX = combo_OS.getSelectionModel().getSelectedIndex() + 1;
                         
                         String numeroNovo = null;
                         int qtd = 0;
@@ -141,8 +190,9 @@ public class Pedido_peca_telaController implements Initializable {
                         
                         pd.setNumeroPedido(numeroNovo);
                         pd.setEmailFabricante(txtEmail.getText());
-                        pd.setIdOrdem(numeroOrdemINDEX);
-
+                        pd.setIdOrdem(ppDados.getIdOrdem());
+                        
+                        
                         pdDAO.inserirPedido(pd);
 
                         if(!"".equals(txtCodigo1.getText()) && !"".equals(txtDesc1.getText()) && !"".equals(txtQtd1.getText())){
@@ -324,8 +374,10 @@ public class Pedido_peca_telaController implements Initializable {
 
                             pdDAO.inserirItemPedido(pd);
                         }
-                        JOptionPane.showMessageDialog(null,"O seu Pedido foi gravado com Sucesso!","Gravado com Sucesso", JOptionPane.PLAIN_MESSAGE);
-                        telaCadastroController.telaCadastroControle.FecharTelaCadastroPedido();
+                        
+                            JOptionPane.showMessageDialog(null,"Seu pedido foi gravado corretamente!","Dados gravado com Sucesso", JOptionPane.PLAIN_MESSAGE);
+                            telaCadastroController.telaCadastroControle.FecharTelaCadastroPedido();
+
                     } 
                 }
             });
@@ -350,5 +402,57 @@ public class Pedido_peca_telaController implements Initializable {
             }
         });
         
+        btBuscarNumeroOrdem.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                paneNumeroOrdem.setVisible(true);
+                btGravar.setDisable(true);
+                btCancelar.setDisable(true);
+            }        
+        });
+        
+        btSelecionar.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                 if(!tabelaNumeroOrdem.getSelectionModel().isEmpty()){
+                     OrdemServicoDados c = (OrdemServicoDados) tabelaNumeroOrdem.getSelectionModel().getSelectedItem();
+                     
+                     txtNumeroOrdem.setText(c.getNumero_ordem());
+                     
+                     ppDados.setIdOrdem(c.getId_Ordem());
+                     
+                     paneNumeroOrdem.setVisible(false);
+                     btGravar.setDisable(false);
+                     btCancelar.setDisable(false);
+                 } else {
+                     JOptionPane.showMessageDialog(null,"Selecione uma linha para realizar Alteração","Nenhuma Seleção", JOptionPane.PLAIN_MESSAGE);
+                 }
+            }
+        });
+        
+        CancelarSelecaoNumero.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                paneNumeroOrdem.setVisible(false);
+                btGravar.setDisable(false);
+                btCancelar.setDisable(false);
+            }
+        });
+        
+        
+        btBuscarNumero.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                if(!txtNumeroBuscaOrdem.getText().isEmpty()){
+                    pedidoPecaDAO ppDAO = new pedidoPecaDAO();
+                    
+                    ObservableList<OrdemServicoDados> listaOrdem = FXCollections.observableArrayList(ppDAO.selectNumeroOrdem(txtNumeroBuscaOrdem.getText()));
+                    tabelaNumeroOrdem.setItems(listaOrdem);
+                    tabelaNumeroOrdem.refresh();
+                } else {
+                    atualizarTabelaNumeroOrdem();
+                }
+            }
+        });
     }    
 }

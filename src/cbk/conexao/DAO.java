@@ -1,5 +1,6 @@
 package cbk.conexao;
 
+import cbk.dados.OrdemServicoDados;
 import cbk.dados.clienteDados;
 import cbk.dados.itemPedidoPecaDados;
 import cbk.dados.loginDados;
@@ -57,6 +58,10 @@ public abstract class DAO<T>{
     public abstract List<String> ordemServicoNum();
     public abstract List<T> pedidoPeca();
     public abstract List<itemPedidoPecaDados> itemPedidoPeca(int idpeca);
+    public abstract boolean atualizarPedido(itemPedidoPecaDados obj);
+    public abstract boolean atualizarNumeroOrdem(T obj);
+    public abstract List<T> selectFiltroPedido(String numeroPedido, String numeroOrdem, String email, int opcao);
+    public abstract List<OrdemServicoDados> selectNumeroOrdem(String numeroOrdem);
     
     /* Utilizado pela Clasee loginDAO*/
     public abstract boolean verificaLogin(String usuario, String senha);
@@ -70,4 +75,6 @@ public abstract class DAO<T>{
     public abstract int contagemOsFechadas();
     public abstract List<T> usuarios();
     public abstract String Autorizada();
+    public abstract List<T> configuracao();
+    public abstract boolean atualizaConfiguracao(T obj);
 }

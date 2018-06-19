@@ -1,5 +1,6 @@
 package cbk.conexao;
 
+import cbk.dados.OrdemServicoDados;
 import cbk.dados.clienteDados;
 import cbk.dados.itemPedidoPecaDados;
 import cbk.dados.loginDados;
@@ -123,9 +124,9 @@ public class pedidoPecaDAO extends DAO<pedidoPecaDados> {
         ResultSet rs = null;
 
         try {
-                String sql ="SELECT a.id_peca, a.num_pedido, a.email_fabricante, b.numero_ordem "+
+                String sql ="SELECT a.id_peca, a.num_pedido, a.email_fabricante, b.id_ordem, b.numero_ordem "+
                             "FROM pedido_peca AS a LEFT JOIN ordem_servico AS b "+
-                            "ON a.id_peca = b.numero_ordem;";
+                            "ON a.id_ordem = b.id_ordem;";
                 stmt = conn.prepareStatement(sql);
                       
                 rs = stmt.executeQuery();
@@ -133,16 +134,18 @@ public class pedidoPecaDAO extends DAO<pedidoPecaDados> {
                 while(rs.next())
                 {
                     pedidoPecaDados c = new pedidoPecaDados();
-                    c.setIdPeca(rs.getInt(rs.getInt("id_peca")));
+                    c.setIdPeca(rs.getInt("id_peca"));
                     c.setNumeroPedido(rs.getString("num_pedido"));
-                    c.setNumero_ordem(rs.getString("numero_ordem"));
                     c.setEmailFabricante(rs.getString("email_fabricante"));
+                    c.setIdOrdem(rs.getInt("id_ordem"));
+                    c.setNumero_ordem(rs.getString("numero_ordem"));
                     listaPedido.add(c);
                 }
-                stmt.close();
+                
         } catch(SQLException e) {
              JOptionPane.showMessageDialog(null,"Erro ao se conectar ao banco","Erro", JOptionPane.ERROR_MESSAGE);
-             System.out.println("erro ao se conectar com o banco: "+e.getMessage());
+             System.out.println("erro: "+e.getMessage());
+             
         }
         
         return listaPedido;
@@ -151,30 +154,27 @@ public class pedidoPecaDAO extends DAO<pedidoPecaDados> {
     @Override
     public List<itemPedidoPecaDados> itemPedidoPeca(int idpeca) {
         List<itemPedidoPecaDados> listaItem = new ArrayList<itemPedidoPecaDados>();
-        itemPedidoPecaDados c = new itemPedidoPecaDados();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
         
         try {
-            String sql = "SELECT a.id_peca_item, b.num_pedido, a.codigo_peca, a.descricao_peca, a.qtd_peca, c.numero_ordem "+
-                         "FROM pedido_peca_item AS a "+
-                         "INNER JOIN pedido_peca AS b ON a.id_peca = b.id_peca "+
-                         "LEFT JOIN ordem_servico AS c ON b.id_ordem = c.id_ordem "+
-                         "WHERE a.id_peca = ?;";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, idpeca);
+            String sql = "SELECT * FROM pedido_peca_item AS a "+
+                         "WHERE a.id_peca = "+idpeca+";";
+            stmt = conn.prepareStatement(sql);
             
-            ResultSet rs = stmt.executeQuery();
+            rs = stmt.executeQuery();
             
             while(rs.next()){
+                itemPedidoPecaDados c = new itemPedidoPecaDados();
                 c.setIdPecaItem(rs.getInt("id_peca_item"));
-                c.setNumero_pedido(rs.getString("num_pedido"));
                 c.setCodigo(rs.getString("codigo_peca"));
                 c.setDescricao(rs.getString("descricao_peca"));
                 c.setQuantidade(rs.getInt("qtd_peca"));
-                c.setNumero_ordem(rs.getString("numero_ordem"));
+                c.setQuantidade_texto(Integer.toString(rs.getInt("qtd_peca")));
                 listaItem.add(c);
             }
             
-            
+            stmt.close();
         }catch(SQLException e){
             System.out.println("erro ao se conectar com o banco: "+e.getMessage());
         }
@@ -182,6 +182,228 @@ public class pedidoPecaDAO extends DAO<pedidoPecaDados> {
         return listaItem;
     }
     
+    @Override
+    public boolean atualizarPedido(itemPedidoPecaDados obj) {
+        PreparedStatement stmt = null;
+        
+        try {
+            String sql = "UPDATE pedido_peca_item SET codigo_peca = ?, descricao_peca = ?, qtd_peca = ? "+
+                         "WHERE id_peca_item = ?;";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, obj.getCodigo());
+            stmt.setString(2, obj.getDescricao());
+            stmt.setInt(3, obj.getQuantidade());
+            stmt.setInt(4, obj.getIdPecaItem());
+            
+            while(stmt.executeUpdate() == 1){
+                return true;
+            }
+
+        }catch(SQLException e){
+            System.out.println("erro ao se conectar com o banco: "+e.getMessage());
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public boolean atualizarNumeroOrdem(pedidoPecaDados obj) {
+        PreparedStatement stmt = null;
+        
+        try {
+            String sql = "UPDATE pedido_peca SET id_ordem = ?, email_fabricante = ? "+
+                         "WHERE id_peca = ?;";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, obj.getIdOrdem());
+            stmt.setString(2, obj.getEmailFabricante());
+            stmt.setInt(3, obj.getIdPeca());
+            
+            while(stmt.executeUpdate() == 1){
+                return true;
+            }
+
+        }catch(SQLException e){
+            System.out.println("erro ao se conectar com o banco: "+e.getMessage());
+        }
+        
+        return false;
+    }
+    
+     @Override
+    public List<pedidoPecaDados> selectFiltroPedido(String numeroPedido, String numeroOrdem, String email, int opcao){
+            String sql = null;
+            ResultSet rs = null;
+            PreparedStatement stmt = null;
+            pedidoPecaDados obj = new pedidoPecaDados();
+            List<pedidoPecaDados> listaPedido = new ArrayList<pedidoPecaDados>();
+        // OPÇÕES DE SELECTS
+        try{
+            switch(opcao){
+                case 1: // numero do pedido
+                    sql = "SELECT a.id_peca, a.num_pedido, a.email_fabricante, b.id_ordem, b.numero_ordem "+
+                          "FROM pedido_peca AS a LEFT JOIN ordem_servico AS b "+
+                          "ON a.id_ordem = b.id_ordem WHERE a.num_pedido like '%"+numeroPedido+"%';";
+                    stmt = conn.prepareStatement(sql);
+                    rs = stmt.executeQuery();
+                    while(rs.next()){
+                        
+	                    pedidoPecaDados c = new pedidoPecaDados();
+	                    c.setIdPeca(rs.getInt("id_peca"));
+	                    c.setNumeroPedido(rs.getString("num_pedido"));
+	                    c.setEmailFabricante(rs.getString("email_fabricante"));
+	                    c.setIdOrdem(rs.getInt("id_ordem"));
+	                    c.setNumero_ordem(rs.getString("numero_ordem"));
+	                    listaPedido.add(c);
+                    } 
+                break;
+                
+                case 2: // numero da ordem de serviço
+                    sql = "SELECT a.id_peca, a.num_pedido, a.email_fabricante, b.id_ordem, b.numero_ordem "+
+                          "FROM pedido_peca AS a LEFT JOIN ordem_servico AS b "+
+                          "ON a.id_ordem = b.id_ordem WHERE b.numero_ordem like '%"+numeroOrdem+"%';";
+                    stmt = conn.prepareStatement(sql);
+                    rs = stmt.executeQuery();
+                    while(rs.next()){
+                        
+                        pedidoPecaDados c = new pedidoPecaDados();
+	                    c.setIdPeca(rs.getInt("id_peca"));
+	                    c.setNumeroPedido(rs.getString("num_pedido"));
+	                    c.setEmailFabricante(rs.getString("email_fabricante"));
+	                    c.setIdOrdem(rs.getInt("id_ordem"));
+	                    c.setNumero_ordem(rs.getString("numero_ordem"));
+	                    listaPedido.add(c);
+                    }
+                break;
+                
+                case 3: // email
+                    sql = "SELECT a.id_peca, a.num_pedido, a.email_fabricante, b.id_ordem, b.numero_ordem "+
+                          "FROM pedido_peca AS a LEFT JOIN ordem_servico AS b "+
+                          "ON a.id_ordem = b.id_ordem WHERE a.email_fabricante like '%"+email+"%';";
+                    stmt = conn.prepareStatement(sql);
+                    rs = stmt.executeQuery();
+                    while(rs.next()){
+                        
+                        pedidoPecaDados c = new pedidoPecaDados();
+	                    c.setIdPeca(rs.getInt("id_peca"));
+	                    c.setNumeroPedido(rs.getString("num_pedido"));
+	                    c.setEmailFabricante(rs.getString("email_fabricante"));
+	                    c.setIdOrdem(rs.getInt("id_ordem"));
+	                    c.setNumero_ordem(rs.getString("numero_ordem"));
+	                    listaPedido.add(c);
+                    }
+                break;
+                
+                case 4: // numeroPedido + numeroOrdem
+                    sql = "SELECT a.id_peca, a.num_pedido, a.email_fabricante, b.id_ordem, b.numero_ordem "+
+                          "FROM pedido_peca AS a LEFT JOIN ordem_servico AS b "+
+                          "ON a.id_ordem = b.id_ordem WHERE a.num_pedido like '%"+numeroPedido+"%' OR b.numero_ordem like '%"+numeroOrdem+"%';";
+                    rs = stmt.executeQuery();
+                    while(rs.next()){
+                        
+                        pedidoPecaDados c = new pedidoPecaDados();
+	                    c.setIdPeca(rs.getInt("id_peca"));
+	                    c.setNumeroPedido(rs.getString("num_pedido"));
+	                    c.setEmailFabricante(rs.getString("email_fabricante"));
+	                    c.setIdOrdem(rs.getInt("id_ordem"));
+	                    c.setNumero_ordem(rs.getString("numero_ordem"));
+	                    listaPedido.add(c);
+                    }
+                break;
+                
+                case 5: // numeroPedido + email
+                    sql = "SELECT a.id_peca, a.num_pedido, a.email_fabricante, b.id_ordem, b.numero_ordem "+
+                          "FROM pedido_peca AS a LEFT JOIN ordem_servico AS b "+
+                          "ON a.id_ordem = b.id_ordem WHERE a.num_pedido like '%"+numeroPedido+"%' OR a.email_fabricante like '%"+email+"%';";
+                    stmt = conn.prepareStatement(sql);
+                    rs = stmt.executeQuery();
+                    while(rs.next()){
+                        
+                        pedidoPecaDados c = new pedidoPecaDados();
+	                    c.setIdPeca(rs.getInt("id_peca"));
+	                    c.setNumeroPedido(rs.getString("num_pedido"));
+	                    c.setEmailFabricante(rs.getString("email_fabricante"));
+	                    c.setIdOrdem(rs.getInt("id_ordem"));
+	                    c.setNumero_ordem(rs.getString("numero_ordem"));
+	                    listaPedido.add(c);
+                    }
+                break;
+                
+                case 6: // numeroOrdem + email
+                    sql = "SELECT a.id_peca, a.num_pedido, a.email_fabricante, b.id_ordem, b.numero_ordem "+
+                          "FROM pedido_peca AS a LEFT JOIN ordem_servico AS b "+
+                          "ON a.id_ordem = b.id_ordem WHERE b.numero_ordem like '%"+numeroOrdem+"%' OR a.email_fabricante like '%"+email+"%';";
+                    stmt = conn.prepareStatement(sql);
+                    rs = stmt.executeQuery();
+                    while(rs.next()){
+                        
+                        pedidoPecaDados c = new pedidoPecaDados();
+	                    c.setIdPeca(rs.getInt("id_peca"));
+	                    c.setNumeroPedido(rs.getString("num_pedido"));
+	                    c.setEmailFabricante(rs.getString("email_fabricante"));
+	                    c.setIdOrdem(rs.getInt("id_ordem"));
+	                    c.setNumero_ordem(rs.getString("numero_ordem"));
+	                    listaPedido.add(c);
+                    }
+                break;
+                
+                case 7: // numeroPedido + numeroOrdem + email
+                    sql = "SELECT a.id_peca, a.num_pedido, a.email_fabricante, b.id_ordem, b.numero_ordem "+
+                          "FROM pedido_peca AS a LEFT JOIN ordem_servico AS b "+
+                          "ON a.id_ordem = b.id_ordem WHERE a.num_pedido like '%"+numeroPedido+"%' "+ 
+                          "b.numero_ordem like '%"+numeroOrdem+"%' OR a.email_fabricante like '%"+email+"%';";
+                    stmt = conn.prepareStatement(sql);
+                    rs = stmt.executeQuery();
+                    while(rs.next()){
+                        
+                        pedidoPecaDados c = new pedidoPecaDados();
+	                    c.setIdPeca(rs.getInt("id_peca"));
+	                    c.setNumeroPedido(rs.getString("num_pedido"));
+	                    c.setEmailFabricante(rs.getString("email_fabricante"));
+	                    c.setIdOrdem(rs.getInt("id_ordem"));
+	                    c.setNumero_ordem(rs.getString("numero_ordem"));
+	                    listaPedido.add(c);
+                    }
+                break;
+                
+                
+            }
+            
+        } catch(SQLException e){
+            System.out.printf("Erro: %s", e.getMessage());
+        }
+        
+        return listaPedido;
+    }
+    
+    @Override
+    public List<OrdemServicoDados> selectNumeroOrdem(String numeroOrdem) {
+        List<OrdemServicoDados> listaNumeroOrdem = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+                String sql ="SELECT a.id_ordem, a.numero_ordem "+
+                            "FROM ordem_servico AS a WHERE a.numero_ordem like '%"+numeroOrdem+"%';";
+                stmt = conn.prepareStatement(sql);
+                      
+                rs = stmt.executeQuery();
+                
+                while(rs.next())
+                {
+                    OrdemServicoDados c = new OrdemServicoDados();
+                    c.setId_Ordem(rs.getInt("id_ordem"));
+                    c.setNumero_ordem(rs.getString("numero_ordem"));
+                    listaNumeroOrdem.add(c);
+                }
+                
+        } catch(SQLException e) {
+             JOptionPane.showMessageDialog(null,"Erro ao se conectar ao banco","Erro", JOptionPane.ERROR_MESSAGE);
+             System.out.println("erro: "+e.getMessage());
+             
+        }
+        
+        return listaNumeroOrdem;
+    }
     
     /* ############################################################################################################################################# */
     /* ############################################################################################################################################# */
@@ -325,4 +547,15 @@ public class pedidoPecaDAO extends DAO<pedidoPecaDados> {
     public boolean excluirOrdem(pedidoPecaDados obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<pedidoPecaDados> configuracao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizaConfiguracao(pedidoPecaDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+  
 }

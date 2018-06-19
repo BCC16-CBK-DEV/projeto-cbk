@@ -63,6 +63,8 @@ public class TelaConsultaClienteController implements Initializable {
             loginController.loginTela.lbUsuarios.setDisable(true);
             cadastroClienteController.cadastroClienteTela.lbIdCliente.setVisible(true);
             cadastroClienteController.cadastroClienteTela.lbIdCliente_numero.setVisible(true);
+            loginController.loginTela.btConfiguracao.setDisable(true);
+            loginController.loginTela.lbConfiguracao.setDisable(true);
         } catch(IOException ex) {
                  System.out.printf("Erro: %s", ex.getMessage());
         }
@@ -80,6 +82,8 @@ public class TelaConsultaClienteController implements Initializable {
         loginController.loginTela.btConsultas.setDisable(true);
         loginController.loginTela.lbConsultas.setDisable(true);
         loginController.loginTela.lbUsuarios.setDisable(true);
+        loginController.loginTela.btConfiguracao.setDisable(true);
+        loginController.loginTela.lbConfiguracao.setDisable(true);
     }
     
     // Método para atualizar tabela
@@ -277,6 +281,8 @@ public class TelaConsultaClienteController implements Initializable {
                 loginController.loginTela.btConsultas.setDisable(false);
                 loginController.loginTela.lbConsultas.setDisable(false);
                 loginController.loginTela.lbUsuarios.setDisable(false);
+                loginController.loginTela.btConfiguracao.setDisable(false);
+                loginController.loginTela.lbConfiguracao.setDisable(false);
             }
         });
         // Botão limpar campos

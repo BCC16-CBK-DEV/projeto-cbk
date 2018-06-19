@@ -30,7 +30,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label layoutX="325.0" layoutY="353.0" text="Celular:" />
+      <Label layoutX="272.0" layoutY="353.0" text="Celular:" />
       <Label layoutX="34.0" layoutY="353.0" text="Telefone:" />
       <Label layoutX="46.0" layoutY="314.0" text="e-mail:" />
       <Label layoutX="584.0" layoutY="277.0" text="Número:" />
@@ -50,18 +50,59 @@
          </font>
       </Label>
       <Separator layoutX="37.0" layoutY="55.0" prefHeight="0.0" prefWidth="670.0" />
-      <TextField fx:id="txtNome" layoutX="83.0" layoutY="125.0" prefHeight="25.0" prefWidth="622.0" />
-      <TextField fx:id="txtCpf" layoutX="83.0" layoutY="163.0" prefHeight="25.0" prefWidth="231.0" />
-      <TextField fx:id="txtRg" layoutX="366.0" layoutY="163.0" prefHeight="25.0" prefWidth="231.0" />
-      <TextField fx:id="txtCep" layoutX="83.0" layoutY="199.0" prefHeight="25.0" prefWidth="231.0" />
-      <TextField fx:id="txtCidade" layoutX="366.0" layoutY="199.0" prefHeight="25.0" prefWidth="231.0" />
-      <TextField fx:id="txtEstado" layoutX="628.0" layoutY="199.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="txtEndereco" layoutX="83.0" layoutY="237.0" prefHeight="25.0" prefWidth="622.0" />
-      <TextField fx:id="txtBairro" layoutX="83.0" layoutY="273.0" prefHeight="25.0" prefWidth="231.0" />
-      <TextField fx:id="txtComplemento" layoutX="404.0" layoutY="273.0" prefHeight="25.0" prefWidth="168.0" />
-      <TextField fx:id="txtNumero" layoutX="632.0" layoutY="273.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="txtEmail" layoutX="83.0" layoutY="310.0" prefHeight="25.0" prefWidth="622.0" />
-      <TextField fx:id="txtTelefone" layoutX="83.0" layoutY="349.0" prefHeight="25.0" prefWidth="231.0" />
-      <TextField fx:id="txtCelular" layoutX="366.0" layoutY="349.0" prefHeight="25.0" prefWidth="231.0" />
+      <TextField fx:id="txtNome" layoutX="90.0" layoutY="125.0" prefHeight="25.0" prefWidth="615.0" />
+      <TextField fx:id="txtCpf" layoutX="90.0" layoutY="163.0" prefHeight="25.0" prefWidth="224.0" />
+      <TextField fx:id="txtRg" layoutX="373.0" layoutY="163.0" prefHeight="25.0" prefWidth="224.0" />
+      <TextField fx:id="txtCep" layoutX="90.0" layoutY="199.0" prefHeight="25.0" prefWidth="224.0" />
+      <TextField fx:id="txtCidade" layoutX="373.0" layoutY="199.0" prefHeight="25.0" prefWidth="224.0" />
+      <TextField fx:id="txtEstado" layoutX="636.0" layoutY="199.0" prefHeight="25.0" prefWidth="64.0" />
+      <TextField fx:id="txtEndereco" layoutX="90.0" layoutY="237.0" prefHeight="25.0" prefWidth="615.0" />
+      <TextField fx:id="txtBairro" layoutX="90.0" layoutY="273.0" prefHeight="25.0" prefWidth="224.0" />
+      <TextField fx:id="txtComplemento" layoutX="411.0" layoutY="273.0" prefHeight="25.0" prefWidth="161.0" />
+      <TextField fx:id="txtNumero" layoutX="640.0" layoutY="273.0" prefHeight="25.0" prefWidth="64.0" />
+      <TextField fx:id="txtEmail" layoutX="90.0" layoutY="310.0" prefHeight="25.0" prefWidth="615.0" />
+      <TextField fx:id="txtTelefone" layoutX="90.0" layoutY="349.0" prefHeight="25.0" prefWidth="161.0" />
+      <TextField fx:id="txtCelular" layoutX="320.0" layoutY="349.0" prefHeight="25.0" prefWidth="161.0" />
+      <Label layoutX="83.0" layoutY="125.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="411.0" layoutY="73.0" text="Campos importantes para ser possível gravar dados." />
+      <Label layoutX="402.0" layoutY="73.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="163.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="199.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="237.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="274.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="311.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="312.0" layoutY="348.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

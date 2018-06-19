@@ -49,6 +49,22 @@ INSERT INTO `cliente` (`id_cliente`, `nome_cliente`, `cpf`, `rg`, `cep`, `endere
 	(7, 'Matheus Augusto Knopo', '464.728.898-64', '36.144.797-8', '17514-310', 'Diogo Melhado', 'Jardim Luciana', '492', 'Casa', 'matheusaugustoknopp@gmail.com', '(14)3306-8304', '(14)98102-9024', 'Marilia', 'SP');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 
+-- Copiando estrutura para tabela cbk_database.configuracao
+CREATE TABLE IF NOT EXISTS `configuracao` (
+  `id_configuracoes` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(150) NOT NULL,
+  `senha_email` varchar(100) NOT NULL,
+  `smtp_servidor_email` varchar(100) DEFAULT NULL,
+  `porta_servidor` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id_configuracoes`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Copiando dados para a tabela cbk_database.configuracao: 1 rows
+/*!40000 ALTER TABLE `configuracao` DISABLE KEYS */;
+INSERT INTO `configuracao` (`id_configuracoes`, `email`, `senha_email`, `smtp_servidor_email`, `porta_servidor`) VALUES
+	(1, 'igor492@gmail.com', 'casconi12', 'smtp.gmail.com', '465');
+/*!40000 ALTER TABLE `configuracao` ENABLE KEYS */;
+
 -- Copiando estrutura para tabela cbk_database.departamento
 CREATE TABLE IF NOT EXISTS `departamento` (
   `id_departamento` int(11) NOT NULL AUTO_INCREMENT,
@@ -132,16 +148,19 @@ INSERT INTO `ordem_servico` (`id_ordem`, `numero_ordem`, `nota_fiscal`, `data_co
 CREATE TABLE IF NOT EXISTS `pedido_peca` (
   `id_peca` int(11) NOT NULL AUTO_INCREMENT,
   `num_pedido` varchar(10) NOT NULL,
-  `email_fabricante` varchar(50) DEFAULT NULL,
+  `email_fabricante` varchar(150) DEFAULT NULL,
   `id_ordem` int(11) NOT NULL,
   PRIMARY KEY (`id_peca`),
   KEY `fk_id_ordem` (`id_ordem`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela cbk_database.pedido_peca: 1 rows
+-- Copiando dados para a tabela cbk_database.pedido_peca: 3 rows
 /*!40000 ALTER TABLE `pedido_peca` DISABLE KEYS */;
 INSERT INTO `pedido_peca` (`id_peca`, `num_pedido`, `email_fabricante`, `id_ordem`) VALUES
-	(1, '0001', 'igor492@gmail.com', 1);
+	(1, '0001', 'matheusaugustoknopp@gmail.com', 1),
+	(2, '0002', 'igor492@gmail.com', 2),
+	(3, '0003', 'bolfarinibarrueco@gmail.com', 3),
+	(4, '0004', 'igor492@gmail.com', 3);
 /*!40000 ALTER TABLE `pedido_peca` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela cbk_database.pedido_peca_item
@@ -155,19 +174,19 @@ CREATE TABLE IF NOT EXISTS `pedido_peca_item` (
   KEY `fk_id_peca` (`id_peca`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela cbk_database.pedido_peca_item: 10 rows
+-- Copiando dados para a tabela cbk_database.pedido_peca_item: 9 rows
 /*!40000 ALTER TABLE `pedido_peca_item` DISABLE KEYS */;
 INSERT INTO `pedido_peca_item` (`id_peca_item`, `id_peca`, `codigo_peca`, `descricao_peca`, `qtd_peca`) VALUES
-	(1, 1, '1', 'peca1', 10),
-	(2, 1, '2', 'peca2', 20),
-	(3, 1, '3', 'peca3', 30),
-	(4, 1, '4', 'peca4', 40),
-	(5, 1, '5', 'peca5', 50),
-	(6, 1, '6', 'peca6', 60),
-	(7, 1, '7', 'peca7', 70),
-	(8, 1, '8', 'peca8', 80),
-	(9, 1, '9', 'peca9', 90),
-	(10, 1, '10', 'peca10', 100);
+	(1, 1, '12', 'peça 123', 3123),
+	(2, 1, '32', 'peça32', 312),
+	(3, 1, '32132', 'peça43', 3424),
+	(4, 1, '3244', 'pefds', 4324),
+	(5, 1, '432', 'pesdfdd', 4342),
+	(6, 2, '21', 'peça4', 13),
+	(7, 2, '23', 'peça5', 43),
+	(8, 3, '32', 'peça4', 3),
+	(9, 3, '1412', 'peça44', 3),
+	(10, 4, '2', '3', 4);
 /*!40000 ALTER TABLE `pedido_peca_item` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela cbk_database.status_os

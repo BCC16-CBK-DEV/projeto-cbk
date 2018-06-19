@@ -1,5 +1,6 @@
 package cbk.conexao;
 
+import cbk.dados.OrdemServicoDados;
 import cbk.dados.clienteDados;
 import cbk.dados.itemPedidoPecaDados;
 import cbk.dados.loginDados;
@@ -269,6 +270,55 @@ public class loginDAO extends DAO<loginDados> {
         return contador;
     }
     
+    @Override
+    public List<loginDados> configuracao() {
+        List<loginDados> lista = new ArrayList<loginDados>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        try {
+            String sql = "SELECT * FROM configuracao";
+            stmt = conn.prepareStatement(sql);
+            
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                loginDados c = new loginDados();
+                c.setEmail_remetente(rs.getString("email"));
+                c.setSenha_email(rs.getString("senha_email"));
+                c.setSmtp_servidor(rs.getString("smtp_servidor_email"));
+                c.setPorta_smtp(rs.getString("porta_servidor"));
+                lista.add(c);
+            }
+            
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("erro ao se conectar com o banco: "+e.getMessage());
+        }
+        
+        return lista;
+    }
+    
+    @Override
+    public boolean atualizaConfiguracao(loginDados obj) {
+        try{
+            String sql = "UPDATE configuracao SET email = ?, senha_email = ?, smtp_servidor_email = ?, porta_servidor = ?;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, obj.getEmail_remetente());
+            stmt.setString(2, obj.getSenha_email());
+            stmt.setString(3, obj.getSmtp_servidor()); 
+            stmt.setString(4, obj.getPorta_smtp());
+            
+            if(stmt.executeUpdate() == 1){
+                return true;
+            }
+            
+        }catch(SQLException e){
+            System.out.println("erro: "+e.getMessage());
+        }
+        return false;
+    }
+    
     /* ############################################################################################################################################# */
     /* ############################################################################################################################################# */
     /* ############################################################################################################################################# */
@@ -384,6 +434,26 @@ public class loginDAO extends DAO<loginDados> {
 
     @Override
     public List<itemPedidoPecaDados> itemPedidoPeca(int idpeca) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizarPedido(itemPedidoPecaDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizarNumeroOrdem(loginDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<loginDados> selectFiltroPedido(String numeroPedido, String numeroOrdem, String email, int opcao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<OrdemServicoDados> selectNumeroOrdem(String numeroOrdem) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

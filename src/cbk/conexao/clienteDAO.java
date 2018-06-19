@@ -1,6 +1,7 @@
 
 package cbk.conexao;
 
+import cbk.dados.OrdemServicoDados;
 import cbk.dados.clienteDados;
 import cbk.dados.itemPedidoPecaDados;
 import com.mysql.jdbc.Statement;
@@ -639,6 +640,36 @@ public class clienteDAO extends DAO<clienteDados> {
 
     @Override
     public List<itemPedidoPecaDados> itemPedidoPeca(int idpeca) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizarPedido(itemPedidoPecaDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizarNumeroOrdem(clienteDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<clienteDados> selectFiltroPedido(String numeroPedido, String numeroOrdem, String email, int opcao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<clienteDados> configuracao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizaConfiguracao(clienteDados obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<OrdemServicoDados> selectNumeroOrdem(String numeroOrdem) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

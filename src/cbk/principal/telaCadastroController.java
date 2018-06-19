@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cbk.principal;
 
 import cbk.conexao.pedidoPecaDAO;
@@ -25,11 +20,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
-/**
- * FXML Controller class
- *
- * @author igorcasconi
- */
 public class telaCadastroController implements Initializable {
 
     public static telaCadastroController telaCadastroControle;
@@ -62,6 +52,8 @@ public class telaCadastroController implements Initializable {
                 loginController.loginTela.lbUsuarios.setDisable(true);
                 cadastroClienteController.cadastroClienteTela.lbIdCliente.setVisible(false);
                 cadastroClienteController.cadastroClienteTela.lbIdCliente_numero.setVisible(false);
+                loginController.loginTela.btConfiguracao.setDisable(true);
+                loginController.loginTela.lbConfiguracao.setDisable(true);
             }catch(IOException ex) {
                  System.out.printf("Erro: %s", ex.getMessage());
             }
@@ -83,6 +75,8 @@ public class telaCadastroController implements Initializable {
                 loginController.loginTela.btConsultas.setDisable(true);
                 loginController.loginTela.lbConsultas.setDisable(true);
                 loginController.loginTela.lbUsuarios.setDisable(true);
+                loginController.loginTela.btConfiguracao.setDisable(true);
+                loginController.loginTela.lbConfiguracao.setDisable(true);
             }catch(IOException ex) {
                  System.out.printf("Erro: %s", ex.getMessage());
             }
@@ -100,6 +94,8 @@ public class telaCadastroController implements Initializable {
         loginController.loginTela.btConsultas.setDisable(false);
         loginController.loginTela.lbConsultas.setDisable(false);
         loginController.loginTela.lbUsuarios.setDisable(false); 
+        loginController.loginTela.btConfiguracao.setDisable(false);
+        loginController.loginTela.lbConfiguracao.setDisable(false);
     } 
     
     /* Método para Fechar a tela de Cadastro de Ordem de Servico */
@@ -114,6 +110,8 @@ public class telaCadastroController implements Initializable {
         loginController.loginTela.btConsultas.setDisable(false);
         loginController.loginTela.lbConsultas.setDisable(false);
         loginController.loginTela.lbUsuarios.setDisable(false);  
+        loginController.loginTela.btConfiguracao.setDisable(false);
+        loginController.loginTela.lbConfiguracao.setDisable(false);
     }
     
     /* Método para Carregar a tela de Cadastro de Pedido de Peça */
@@ -122,6 +120,8 @@ public class telaCadastroController implements Initializable {
         try{
              TelaCadastroPedido = FXMLLoader.load(telaCadastroController.this.getClass().getResource("pedidoPeca.fxml"));
              stackPane1.getChildren().add(TelaCadastroPedido); 
+             Pedido_peca_telaController.pedidoPeca.lbPedido.setText("Cadastros > Pedido de Peça");
+             Pedido_peca_telaController.pedidoPeca.lbTextoPedido.setText("Cadastrar Pedido de Peça para Ordem de Serviço");
              loginController.loginTela.btCadastro.setDisable(true);
              loginController.loginTela.btUsuario.setDisable(true);
              loginController.loginTela.btSair.setVisible(false);
@@ -130,6 +130,8 @@ public class telaCadastroController implements Initializable {
              loginController.loginTela.btConsultas.setDisable(true);
              loginController.loginTela.lbConsultas.setDisable(true);
              loginController.loginTela.lbUsuarios.setDisable(true);
+             loginController.loginTela.btConfiguracao.setDisable(true);
+             loginController.loginTela.lbConfiguracao.setDisable(true);
          }catch(IOException ex){
             System.out.printf("Erro: %s", ex.getMessage());
          }
@@ -139,14 +141,16 @@ public class telaCadastroController implements Initializable {
     public void FecharTelaCadastroPedido (){
         stackPane1.getChildren().remove(TelaCadastroPedido);
         stackPane1.setVisible(false);
-        loginController.loginTela.btCadastro.setDisable(true);
-        loginController.loginTela.btUsuario.setDisable(true);
+        loginController.loginTela.btCadastro.setDisable(false);
+        loginController.loginTela.btUsuario.setDisable(false);
         loginController.loginTela.btSair.setVisible(false);
         loginController.loginTela.lbSair.setVisible(false);
-        loginController.loginTela.lbCadastros.setDisable(true);
-        loginController.loginTela.btConsultas.setDisable(true);
-        loginController.loginTela.lbConsultas.setDisable(true);
-        loginController.loginTela.lbUsuarios.setDisable(true);    
+        loginController.loginTela.lbCadastros.setDisable(false);
+        loginController.loginTela.btConsultas.setDisable(false);
+        loginController.loginTela.lbConsultas.setDisable(false);
+        loginController.loginTela.lbUsuarios.setDisable(false);  
+        loginController.loginTela.btConfiguracao.setDisable(false);
+        loginController.loginTela.lbConfiguracao.setDisable(false);
     }
     
     

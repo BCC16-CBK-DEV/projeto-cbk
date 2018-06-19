@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cbk.principal;
 
 import MascaraDeCampos.MaskFieldUtil;
@@ -38,11 +34,6 @@ import javafx.util.StringConverter;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-/**
- * FXML Controller class
- *
- * @author gabar
- */
 public class CadastroOrdemServicoController implements Initializable {
 
     public static CadastroOrdemServicoController cadastroOrdemServicoTela;
@@ -140,9 +131,8 @@ public class CadastroOrdemServicoController implements Initializable {
             public void handle(MouseEvent event) {
                             
                 // Verificação se os campos estão vazio
-                if(txtNotaFiscalOS.getText().isEmpty() && txtNumeroSerieOS.getText().isEmpty() && txtDataCompraOS.getValue() == null || 
-                        txtDefeitoOS.getText().isEmpty() || txtCodigoOS.getText().isEmpty() || 
-                        txtDescricaoOS.getText().isEmpty() || txtCpfCliente.getText().isEmpty() || txtNomeCliente.getText().isEmpty()){ 
+                if(txtNotaFiscalOS.getText().isEmpty() || txtDataCompraOS.getValue() == null || 
+                   txtDefeitoOS.getText().isEmpty() || txtDescricaoOS.getText().isEmpty() || txtNomeCliente.getText().isEmpty()){ 
                         JOptionPane.showMessageDialog(null,"Não foi inserido informações importantes", "Erro ao Gravar Dados", JOptionPane.ERROR_MESSAGE);
                      
                 } else{

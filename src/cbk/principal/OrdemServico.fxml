@@ -11,13 +11,13 @@
 <AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbk.principal.CadastroOrdemServicoController">
    <children>
       <DatePicker fx:id="txtDataAberturaOS" layoutX="132.0" layoutY="147.0" prefHeight="25.0" prefWidth="109.0" />
-      <TextField fx:id="txtNotaFiscalOS" layoutX="313.0" layoutY="147.0" prefHeight="17.0" prefWidth="94.0" />
-      <DatePicker fx:id="txtDataCompraOS" layoutX="509.0" layoutY="147.0" prefHeight="25.0" prefWidth="120.0" />
-      <TextField fx:id="txtDefeitoOS" layoutX="144.0" layoutY="189.0" prefHeight="25.0" prefWidth="485.0" />
-      <TextField fx:id="txtCodigoOS" layoutX="82.0" layoutY="262.0" prefHeight="25.0" prefWidth="120.0" />
-      <TextField fx:id="txtDescricaoOS" layoutX="265.0" layoutY="262.0" prefHeight="25.0" prefWidth="368.0" />
+      <TextField fx:id="txtNotaFiscalOS" layoutX="317.0" layoutY="147.0" prefHeight="25.0" prefWidth="149.0" />
+      <DatePicker fx:id="txtDataCompraOS" layoutX="572.0" layoutY="147.0" prefHeight="25.0" prefWidth="110.0" />
+      <TextField fx:id="txtDefeitoOS" layoutX="144.0" layoutY="189.0" prefHeight="25.0" prefWidth="538.0" />
+      <TextField fx:id="txtCodigoOS" layoutX="92.0" layoutY="262.0" prefHeight="25.0" prefWidth="110.0" />
+      <TextField fx:id="txtDescricaoOS" layoutX="272.0" layoutY="262.0" prefHeight="25.0" prefWidth="413.0" />
       <TextField fx:id="txtVoltagemOS" layoutX="94.0" layoutY="304.0" prefHeight="25.0" prefWidth="109.0" />
-      <TextField fx:id="txtNumeroSerieOS" layoutX="301.0" layoutY="304.0" prefHeight="25.0" prefWidth="332.0" />
+      <TextField fx:id="txtNumeroSerieOS" layoutX="324.0" layoutY="304.0" prefHeight="25.0" prefWidth="360.0" />
       <Button fx:id="btGravarOS" layoutX="285.0" layoutY="538.0" mnemonicParsing="false" style="-fx-background-color: #000;" text="Gravar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -49,16 +49,16 @@
          </font>
       </Label>
       <Label fx:id="lbTextoOrdem" layoutX="34.0" layoutY="59.0" text="Cadastrar Ordem de Serviço" />
-      <Label layoutX="34.0" layoutY="151.0" text="Data de Abertura:" />
+      <Label layoutX="27.0" layoutY="151.0" text="Data de Abertura:" />
       <Label layoutX="249.0" layoutY="151.0" text="Nota Fiscal:" />
-      <Label layoutX="416.0" layoutY="151.0" text="Data de Compra:" />
-      <Label layoutX="29.0" layoutY="193.0" text="Defeito Reclamando:" />
+      <Label layoutX="473.0" layoutY="151.0" text="Data de Compra:" />
+      <Label layoutX="26.0" layoutY="193.0" text="Defeito Reclamando:" />
       <Label layoutX="35.0" layoutY="308.0" text="Voltagem:" />
       <Label layoutX="208.0" layoutY="266.0" text="Descrição:" />
       <Label layoutX="35.0" layoutY="266.0" text="Código:" />
-      <Label layoutX="206.0" layoutY="308.0" text="Número de Série:" />
+      <Label layoutX="221.0" layoutY="308.0" text="Número de Série:" />
       <Label layoutX="34.0" layoutY="377.0" text="Nome:" />
-      <TextField fx:id="txtNomeCliente" layoutX="74.0" layoutY="373.0" prefHeight="25.0" prefWidth="283.0" />
+      <TextField fx:id="txtNomeCliente" layoutX="80.0" layoutY="373.0" prefHeight="25.0" prefWidth="277.0" />
       <ImageView fx:id="btBuscaCliente" fitHeight="25.0" fitWidth="25.0" layoutX="360.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/ic_search_black_36dp.png" />
@@ -156,5 +156,36 @@
             </ImageView>
          </children>
       </Pane>
+      <Label layoutX="395.0" layoutY="57.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="405.0" layoutY="59.0" text="Campos importantes para ser possível gravar dados." />
+      <Label layoutX="122.0" layoutY="148.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="564.0" layoutY="148.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="71.0" layoutY="373.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="264.0" layoutY="262.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="136.0" layoutY="189.0" text="*" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

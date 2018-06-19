@@ -69,7 +69,7 @@ public class cadastroClienteController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
        
-                if(txtNome.getText().isEmpty() && txtCpf.getText().isEmpty() && txtCep.getText().isEmpty() || txtEndereco.getText().isEmpty() || 
+                if(txtNome.getText().isEmpty() || txtCpf.getText().isEmpty() || txtCep.getText().isEmpty() || txtEndereco.getText().isEmpty() || 
                    txtBairro.getText().isEmpty() || txtEmail.getText().isEmpty() || txtCelular.getText().isEmpty()){ 
                         JOptionPane.showMessageDialog(null,"Não foi inserido informações importantes", "Erro ao Gravar Dados", JOptionPane.ERROR_MESSAGE);
                      

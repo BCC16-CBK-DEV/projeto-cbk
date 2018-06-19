@@ -43,6 +43,8 @@ public class TelaconsultaController implements Initializable {
             loginController.loginTela.btConsultas.setDisable(true);
             loginController.loginTela.lbConsultas.setDisable(true);
             loginController.loginTela.lbUsuarios.setDisable(true);
+            loginController.loginTela.btConfiguracao.setDisable(true);
+            loginController.loginTela.lbConfiguracao.setDisable(true);
         }catch(IOException ex){
             System.out.println("Erro: "+ex.getMessage());
         }
@@ -62,6 +64,8 @@ public class TelaconsultaController implements Initializable {
             loginController.loginTela.btConsultas.setDisable(true);
             loginController.loginTela.lbConsultas.setDisable(true);
             loginController.loginTela.lbUsuarios.setDisable(true);
+            loginController.loginTela.btConfiguracao.setDisable(true);
+            loginController.loginTela.lbConfiguracao.setDisable(true);
         } catch (IOException ex) {
             Logger.getLogger(TelaconsultaController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -81,6 +85,8 @@ public class TelaconsultaController implements Initializable {
             loginController.loginTela.btConsultas.setDisable(true);
             loginController.loginTela.lbConsultas.setDisable(true);
             loginController.loginTela.lbUsuarios.setDisable(true);
+            loginController.loginTela.btConfiguracao.setDisable(true);
+            loginController.loginTela.lbConfiguracao.setDisable(true);
         } catch (IOException ex) {
             Logger.getLogger(TelaconsultaController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -1,8 +1,10 @@
 package cbk.principal;
 
 import cbk.conexao.loginDAO;
+import cbk.dados.loginDados;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +38,7 @@ public class loginController implements Initializable {
     @FXML ImageView btCadastro;
     @FXML ImageView btUsuario;
     @FXML ImageView btConsultas;
+    @FXML ImageView btConfiguracao;
     @FXML StackPane stackPane;
     @FXML private Label txtUsuario_ativo;
     @FXML private Label txtAutorizada;
@@ -47,11 +50,17 @@ public class loginController implements Initializable {
     @FXML Label lbConsultas;
     @FXML Label lbUsuarios;
     @FXML Label lbSair;
+    @FXML Label lbConfiguracao;
     
     // Variavel para controlar Tela abertas
     boolean checkTelaAberta = false;
     loginDAO c = new loginDAO();
     public int idUsuarioTecnico = 0;
+    
+    public String email_remetente = "";
+    public String senha_email = "";
+    public String smtp = "";
+    public String porta = "";
     
     /* ação que vai verificar o Login do usuário */
     @FXML 
@@ -107,6 +116,18 @@ public class loginController implements Initializable {
             }
     }
     
+    /* Método para carregar a tela de Configuracoes */
+    Parent telaConfiguracoes;
+    public void carregarConfiguracoesFXML(){
+            try {
+                stackPane.setVisible(true);
+                telaConsulta = FXMLLoader.load(loginController.this.getClass().getResource("telaConfiguracoes.fxml"));
+                stackPane.getChildren().add(telaConsulta);
+            }catch (IOException ex) {
+                System.out.printf("Erro: %s", ex.getMessage());
+            }
+    }
+    
     /* Método para fechar a tela de Cadastro*/
     public void fecharFXML() {
         stackPane.getChildren().remove(telaCadastroFxml);
@@ -136,10 +157,31 @@ public class loginController implements Initializable {
         txtOrdensAbertas.setText(String.format("%d", c.contagemOsAbertas()));
         txtOrdensFechadas.setText(String.format("%d", c.contagemOsFechadas()));
     }
+    
+    /* Método para fechar a tela de Configurações*/
+    public void fecharConfiguracoesFXML() {
+        stackPane.getChildren().remove(telaConfiguracoes);
+        stackPane.setVisible(false);
+        btSair.setVisible(true);
+        lbSair.setVisible(true);
+        txtOrdensAbertas.setText(String.format("%d", c.contagemOsAbertas()));
+        txtOrdensFechadas.setText(String.format("%d", c.contagemOsFechadas()));
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loginTela = this;
+        
+        /* Configuração de Email */
+        List<loginDados> lista = c.configuracao();
+
+        for(int i = 0; i < lista.size(); i++){
+            email_remetente = lista.get(i).getEmail_remetente();
+            senha_email = lista.get(i).getSenha_email();
+            smtp = lista.get(i).getSmtp_servidor();
+            porta = lista.get(i).getPorta_smtp();
+        }
+        
         
         /* Pressionar ENTER para realizar o Login */
         txtSenha.setOnKeyPressed(new EventHandler<KeyEvent>(){
@@ -212,6 +254,7 @@ public class loginController implements Initializable {
                 } else {
                     fecharTelaConsultaFXML();
                     fecharTelaUsuarioFXML();
+                    fecharConfiguracoesFXML();
                     carregarFXML();
                     checkTelaAberta = true;
                 }
@@ -229,6 +272,7 @@ public class loginController implements Initializable {
                 } else {
                     fecharTelaConsultaFXML();
                     fecharTelaUsuarioFXML();
+                    fecharConfiguracoesFXML();
                     carregarFXML();
                     checkTelaAberta = true;
                 }
@@ -245,6 +289,7 @@ public class loginController implements Initializable {
                 } else {
                     fecharFXML();
                     fecharTelaUsuarioFXML();
+                    fecharConfiguracoesFXML();
                     carregarConsultaFXML();
                     checkTelaAberta = true;
                 }
@@ -261,6 +306,7 @@ public class loginController implements Initializable {
                 } else {
                     fecharFXML();
                     fecharTelaUsuarioFXML();
+                    fecharConfiguracoesFXML();
                     carregarConsultaFXML();
                     checkTelaAberta = true;
                 }
@@ -278,6 +324,7 @@ public class loginController implements Initializable {
                 } else {
                     fecharFXML();
                     fecharTelaConsultaFXML();
+                    fecharConfiguracoesFXML();
                     UsuarioCarregarFXML();
                     checkTelaAberta = true;
                 }    
@@ -294,9 +341,54 @@ public class loginController implements Initializable {
                 } else {
                     fecharFXML();
                     fecharTelaConsultaFXML();
+                    fecharConfiguracoesFXML();
                     UsuarioCarregarFXML();
                     checkTelaAberta = true;
                 } 
+            }
+        });
+         
+         /* Clicar na Imagem Configuracao para carregar a tela de Configuracao */
+        btConfiguracao.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                if(checkTelaAberta = false){    
+                    carregarConfiguracoesFXML();
+                    checkTelaAberta = true;
+                } else {
+                    fecharFXML();
+                    fecharTelaConsultaFXML();
+                    fecharTelaUsuarioFXML();
+                    carregarConfiguracoesFXML();
+                    checkTelaAberta = true;
+                }  
+                    
+                TelaConfiguracoesController.telaConfiguracaoControle.txtEmail.setText(email_remetente);
+                TelaConfiguracoesController.telaConfiguracaoControle.txtSenha.setText(senha_email);
+                TelaConfiguracoesController.telaConfiguracaoControle.txtSMTP.setText(smtp);
+                TelaConfiguracoesController.telaConfiguracaoControle.txtPorta.setText(porta);
+            }
+        });
+        
+        /* Clicar na Label Configuracao para carregar a tela de Configuracao */
+         lbConfiguracao.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                if(checkTelaAberta = false){    
+                    carregarConfiguracoesFXML();
+                    checkTelaAberta = true;
+                } else {
+                    fecharFXML();
+                    fecharTelaConsultaFXML();
+                    fecharTelaUsuarioFXML();
+                    carregarConfiguracoesFXML();
+                    checkTelaAberta = true;
+                } 
+    
+                TelaConfiguracoesController.telaConfiguracaoControle.txtEmail.setText(email_remetente);
+                TelaConfiguracoesController.telaConfiguracaoControle.txtSenha.setText(senha_email);
+                TelaConfiguracoesController.telaConfiguracaoControle.txtSMTP.setText(smtp);
+                TelaConfiguracoesController.telaConfiguracaoControle.txtPorta.setText(porta);
             }
         });
     }        
